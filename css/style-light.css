@@ -9,3 +9,48 @@ hr{
   background-color: #eee4e1;
   width: 12%;
 }
+
+h1 {
+  color: #DA3633;
+}
+
+h2 {
+  color: #6c757d;
+}
+
+p, li{
+  color: #0B132B;
+}
+
+a {
+  color: #388AFC;
+}
+
+a:hover {
+  color: #F0883E;
+}
+
+.dataStructures hr {
+  border-color: #3FB950;
+  margin-left: 0;
+}
+
+.algorithms hr {
+  border-color: #6E40C9;
+  margin-left: 0;
+}
+
+.logicCircuits hr {
+  border-color: #388AFC;
+  margin-left: 0;
+}
+
+.electricalCircuits hr {
+  border-color: #F0883E;
+  margin-left: 0;
+}
+
+.limits hr {
+  border-color: #DA3633;
+  margin-left: 0;
+}
