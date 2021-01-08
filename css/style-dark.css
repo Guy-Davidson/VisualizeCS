@@ -1,5 +1,6 @@
 body {
-  background-color: #1C2541
+  background-color: #1C2541;
+  margin: 0;
 }
 
 hr{
@@ -10,8 +11,40 @@ hr{
   width: 12%;
 }
 
+.title {
+    background: url('../images/LunarEclipse.png') no-repeat center fixed;
+    background-size: cover;
+    height: 1080px;
+    text-align: center;
+}
+
+.im {
+  color: white;
+  position: absolute;
+  top: 390px;
+  right: 1115px;
+  font-size: 60px;
+}
+
+.Guy {
+  color: white;
+  position: relative;
+  top: 320px;
+  font-size: 145px;
+  margin-bottom: 70px;
+}
+
+.imDesc {
+  color: white;
+  position: relative;
+  top: 300px;
+  font-size: 30px;
+}
+
+
 h1 {
   color: #DA3633;
+  margin-top: 0;
 }
 
 h2 {
