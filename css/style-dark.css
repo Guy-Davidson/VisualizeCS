@@ -1,57 +1,39 @@
+/* Site's General Rules */
 body {
   background-color: #1C2541;
   margin: 0;
+  font-family: 'Fraunces', serif;
+  line-height: 1.5;
 }
 
-hr{
+hr {
   border-style: dotted none none;
   border-width: 8px;
   border-color: #388AFC;
-  background-color: #1C2541;
+  background-color: #0d1117;
   width: 12%;
 }
 
-.title {
-    background: url('../images/LunarEclipse.png') no-repeat center fixed;
-    background-size: cover;
-    height: 1080px;
-    text-align: center;
+table {
+  border-spacing: 15px;
+  padding: 10px;
 }
 
-.Guy {
-  color: white;
-  position: relative;
-  top: 320px;
-  font-size: 145px;
-  margin-bottom: 70px;
+.dates {
+  vertical-align: top;
+  text-align: left;
 }
-
-.im {
-  color: white;
-  position: absolute;
-  top: 390px;  
-  right: 59%;
-  font-size: 60px;
-}
-
-.imDesc {
-  color: white;
-  position: relative;
-  top: 300px;
-  font-size: 30px;
-}
-
 
 h1 {
-  color: #DA3633;
   margin-top: 0;
+  color: #E6FEFE;
 }
 
 h2 {
-  color: #6c757d;
+  color: #E6FEFE;
 }
 
-p, li{
+p, li, tr {
   color: #e9ecef;
 }
 
@@ -63,27 +45,160 @@ a:hover {
   color: #F0883E;
 }
 
-.dataStructures hr {
-  border-color: #3FB950;
-  margin-left: 0;
+/* Open Screen */
+.title {
+  background: url('../images/LunarEclipse.png') no-repeat center fixed;
+  background-size: cover;
+  height: 1080px;
+  text-align: center;
+  font-family: 'Berkshire Swash', cursive;
 }
 
-.algorithms hr {
-  border-color: #6E40C9;
-  margin-left: 0;
+.Guy {
+  color: white;
+  position: relative;
+  top: 300px;
+  font-size: 9rem;
+  font-weight: lighter;
+  margin-bottom: 0;
 }
 
-.logicCircuits hr {
+.im {
+  color: white;
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: 3.75rem;
+}
+
+.imDesc {
+  color: white;
+  position: relative;
+  top: 300px;
+  font-size: 30px;
+}
+
+/* About Me */
+.CV {
+  margin-top: 0;
+  background-image: linear-gradient(200deg, #1C2541, #10002b);
+}
+
+.aboutMe {
+  width: 75%;
+  margin: 0 auto 100px auto;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.pp {
+  width: 20%;
+  float: left;
+  padding-right: 40px;
+}
+
+.aboutMeHeader {
+  margin-top: 0;
+}
+
+/* Education Projects and Experience */
+.middleCV {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+
+.professionalExperience {
+  width: 30%;
+  display: inline-block;
+  border-left-style: solid;
+  border-color: #1A88C7;
+  padding: 10px;
+}
+
+.education {
+  width: 30%;
+  display: inline-block;
+  border-left-style: solid;
+  border-color: #13B9DB;
+  padding: 10px;
+}
+
+.projects {
+  width: 30%;
+  display: inline-block;
+  border-left-style: solid;
+  border-color: #7EE5D9;
+  padding: 10px;
+}
+
+/* Military and Other */
+.EndCV {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100px;
+}
+
+.other {
+  width: 30%;
+  display: inline-block;
+  padding: 10px;
+  border-left-style: solid;
+  border-color: #e7c6ff;
+}
+
+.military {
+  width: 30%;
+  display: inline-block;
+  padding: 10px;
+  border-left-style: solid;
+  border-color: #FFE3BC;
+}
+
+/* Guy's Go-To Guide */
+.applications {
+  background-color: #0d1117;
+  border-top: 3px;
+  border-top-style: solid;
+  border-color: #FFE3BC;
+  padding-top: 50px;
+  /* padding-bottom: 300px; */
+  height: 800px;
+}
+
+.gggHeader {
+  padding: 20px;
+  text-align: center;
+  display: block;
+}
+
+.gggH2 {
+  color: #E6FEFE;
+  display: block;
+}
+
+.appList {
+  display: flex;
+  justify-content: center;
+}
+
+.dataStructures, .algorithms, .logicCircuits, .electricalCircuits, .limits {
+  width: 18%;
+  text-align: center;
+  border-style: none none dotted;
+  border-width: 6px;
   border-color: #388AFC;
-  margin-left: 0;
+  background-color: #0d1117;
 }
 
-.electricalCircuits hr {
-  border-color: #F0883E;
-  margin-left: 0;
+footer {
+  height: 100px;
+  background-color: #FFE3BC;
+  border-top-style: solid;
+  border-width: 3px;
+  border-color: #dee2e6;
+  text-align: center;
 }
 
-.limits hr {
-  border-color: #DA3633;
-  margin-left: 0;
+.footerText {
+  color: black;
 }
