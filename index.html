@@ -144,9 +144,9 @@
       <div class="sortType">
         <p>Choose Sorting Algorithm:</p><br>
         <div class="sortTypeButtons">
-          <input class="sortTypeButtonsOne" type="button" name="bubble_Sort" value="Bubble Sort">
-          <input class="sortTypeButtonsOne" type="button" name="Merge_Sort" value="Merge Sort">
-          <input class="sortTypeButtonsOne" type="button" name="Quick_Sort" value="Quick Sort">
+          <input class="sortTypeButtonsOne" class="bubbleSortButton" type="button" name="bubble_Sort" value="Bubble Sort" onclick="bubbleSortSelected(this)">
+          <input class="sortTypeButtonsOne" class="mergeSortButton" type="button" name="Merge_Sort" value="Merge Sort" onclick="notbubbleSortSelected(this)">
+          <input class="sortTypeButtonsOne" class="quickSortButton" type="button" name="Quick_Sort" value="Quick Sort" onclick="notbubbleSortSelected(this)">
         </div>
       </div>
 
@@ -166,7 +166,7 @@
       <div class="action">
         <div class="actionButtons">
           <input class="actionButtonsOne" type="button" name="sort" value="Sort!">
-          <input class="actionButtonsOne" type="button" name="reset" value="Reset">
+          <input class="actionButtonsOne" type="button" name="reset" value="Reset" onclick="reset();">
         </div>
       </div>
 

@@ -200,26 +200,6 @@ a:hover {
   margin: 1px;
 }
 
-.view div:nth-child(odd) {
-  background-color: #12257A;
-}
-
-.view div:nth-child(even) {
-  background-color: #13B9DB;
-}
-
-.elm1 {
-  width: 100%;
-}
-
-.elm2 {
-  width: 50%;
-}
-
-.elm3 {
-  width: 20%;
-}
-
 .sortType {
   grid-column: 2;
   grid-row: 1;
@@ -258,10 +238,6 @@ a:hover {
 input[type=range] {
   width: 60%;
   background-color: #ddd;
-}
-
-input[type=range]:hover {
-  color: #F0883E;
 }
 
 .action {
