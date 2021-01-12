@@ -188,7 +188,7 @@ a:hover {
 }
 
 .view {
-  height: 600px;
+  height: 680px;
   grid-column: 1;
   grid-row: 1/4;
 }
@@ -196,7 +196,28 @@ a:hover {
 .view div {
   border-style: solid;
   border-width: 1px;
-  border-color: #E6FEFE;
+  border-color: #388AFC;
+  margin: 1px;
+}
+
+.view div:nth-child(odd) {
+  background-color: #12257A;
+}
+
+.view div:nth-child(even) {
+  background-color: #13B9DB;
+}
+
+.elm1 {
+  width: 100%;
+}
+
+.elm2 {
+  width: 50%;
+}
+
+.elm3 {
+  width: 20%;
 }
 
 .sortType {
@@ -237,6 +258,10 @@ a:hover {
 input[type=range] {
   width: 60%;
   background-color: #ddd;
+}
+
+input[type=range]:hover {
+  color: #F0883E;
 }
 
 .action {
@@ -307,7 +332,6 @@ input[type="submit"] {
   border-style: solid;
   border-width: 1px;
   border-color: #E6FEFE;
-  /* overflow: hidden; */
 }
 
 .requiredStar {

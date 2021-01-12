@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Fraunces&display=swap" rel="stylesheet">
 
   <!-- JavaScript Source File -->
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 
 </head>
 
@@ -139,10 +139,6 @@
     <div class="sort">
 
       <div class="view">
-        <p>view port</p>
-        <div class="elm1" style="height=500px" style="border">
-          <span>100</span>
-        </div>
       </div>
 
       <div class="sortType">
@@ -155,11 +151,11 @@
       </div>
 
       <div class="arraySize">
-        <p>Choose Array Size</p><br>
+        <p>Choose Array Size:</p><br>
         <div class="arraySizeButtons">
-          <p class="arraySizeButtonsOne" style="margin-top:18px">10</p>
-          <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="10" max="100" onchange="updatearraySizeSliderPick(this.value);">
-          <p class="arraySizeButtonsOne" style="margin-top:18px">100</p>
+          <p class="arraySizeButtonsOne" style="margin-top:18px">5</p>
+          <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="5" max="25" onchange="updatearraySizeSliderPick(this.value);">
+          <p class="arraySizeButtonsOne" style="margin-top:18px">25</p>
         </div>
         <div class="arraySizeButtonsPick">
           <input type="text" class="arraySizeButtonsTwo" id="arraySizeSliderPick" value="">
