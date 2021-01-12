@@ -16,6 +16,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Fraunces&display=swap" rel="stylesheet">
 
+  <!-- JavaScript Source File -->
+  <script src="script.js"></script>
+
 </head>
 
 <body>
@@ -122,7 +125,7 @@
 
       <div class="military">
         <h2>Military</h2>
-        <p>Three years of service in the Combat Unit “Yahalom” witch specialize in underground warfare.
+        <p>Three years of service in the Combat Unit “Yahalom” which specialize in underground warfare.
           Fought mainly in Gaza border, to prevent terror through tunnel passage. </p>
       </div>
     </div>
@@ -132,28 +135,45 @@
   <div class="applications">
     <h1 class="gggHeader">My Sorting Visualizer</h1>
 
-    <div class="appList">
 
-      <div class="dataStructures">
-        <h2 class="gggH2">Data Structures</h2>
+    <div class="sort">
+
+      <div class="view">
+        <p>view port</p>
+        <div class="elm1" style="height=500px" style="border">
+          <span>100</span>
+        </div>
       </div>
 
-      <div class="algorithms">
-        <h2 class="gggH2">Algorithms</h2>
+      <div class="sortType">
+        <p>Choose Sorting Algorithm:</p><br>
+        <div class="sortTypeButtons">
+          <input class="sortTypeButtonsOne" type="button" name="bubble_Sort" value="Bubble Sort">
+          <input class="sortTypeButtonsOne" type="button" name="Merge_Sort" value="Merge Sort">
+          <input class="sortTypeButtonsOne" type="button" name="Quick_Sort" value="Quick Sort">
+        </div>
       </div>
 
-      <div class="logicCircuits">
-        <h2 class="gggH2">Logic Circuits</h2>
-        <p></p>
+      <div class="arraySize">
+        <p>Choose Array Size</p><br>
+        <div class="arraySizeButtons">
+          <p class="arraySizeButtonsOne" style="margin-top:18px">10</p>
+          <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="10" max="100" onchange="updatearraySizeSliderPick(this.value);">
+          <p class="arraySizeButtonsOne" style="margin-top:18px">100</p>
+        </div>
+        <div class="arraySizeButtonsPick">
+          <input type="text" class="arraySizeButtonsTwo" id="arraySizeSliderPick" value="">
+        </div>
+
       </div>
 
-      <div class="electricalCircuits">
-        <h2 class="gggH2">Electrical Circuits</h2>
+      <div class="action">
+        <div class="actionButtons">
+          <input class="actionButtonsOne" type="button" name="sort" value="Sort!">
+          <input class="actionButtonsOne" type="button" name="reset" value="Reset">
+        </div>
       </div>
 
-      <div class="limits">
-        <h2 class="gggH2">Limits</h2>
-      </div>
     </div>
 
 

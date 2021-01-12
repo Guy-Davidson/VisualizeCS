@@ -33,7 +33,7 @@ h2 {
   color: #E6FEFE;
 }
 
-p, li, tr {
+p, li, tr, span {
   color: #e9ecef;
 }
 
@@ -174,18 +174,78 @@ a:hover {
   display: block;
 }
 
-.appList {
+/* Sorting Visualizer */
+.sort {
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+
+.view, .sortType, .arraySize, .action {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #E6FEFE;
+  padding: 5px;
+}
+
+.view {
+  height: 600px;
+  grid-column: 1;
+  grid-row: 1/4;
+}
+
+.view div {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #E6FEFE;
+}
+
+.sortType {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.sortTypeButtons, .arraySizeButtons, .arraySizeButtonsPick, .actionButtons {
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-.dataStructures, .algorithms, .logicCircuits, .electricalCircuits, .limits {
-  width: 18%;
+.sortTypeButtonsOne, .actionButtonsOne {
+  background-color: #13B9DB;
+}
+
+.sortTypeButtonsOne, .arraySizeButtonsOne, .actionButtonsOne {
+  margin: 10px;
+  height: 40px;
+  border-color: #FFE3BC;
+  border-radius: 10px;
+  font-family: 'Fraunces', serif;
+  font-size: 1.01rem;
+  color: #E6FEFE;
+}
+
+.arraySizeButtonsTwo {
   text-align: center;
-  border-style: none none dotted;
-  border-width: 6px;
-  border-color: #388AFC;
-  background-color: #0d1117;
+  width: 15%;
+}
+
+.arraySize {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+input[type=range] {
+  width: 60%;
+  background-color: #ddd;
+}
+
+.action {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.actionButtonsOne {
+  margin-top: 50px;
 }
 
 /* Contact Form */
@@ -265,7 +325,6 @@ input[type="submit"] {
   line-height: 29px;
   line-height: 2rem;
   border-radius: 3px;
-  line-height: 2rem;
 }
 
 /* footer */
