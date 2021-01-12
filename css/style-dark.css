@@ -108,27 +108,16 @@ a:hover {
 }
 
 .professionalExperience {
-  width: 30%;
-  display: inline-block;
-  border-left-style: solid;
   border-color: #1A88C7;
-  padding: 10px;
+  height: 500px;
 }
 
 .education {
-  width: 30%;
-  display: inline-block;
-  border-left-style: solid;
   border-color: #13B9DB;
-  padding: 10px;
 }
 
 .projects {
-  width: 30%;
-  display: inline-block;
-  border-left-style: solid;
   border-color: #7EE5D9;
-  padding: 10px;
 }
 
 /* Military and Other */
@@ -139,19 +128,29 @@ a:hover {
 }
 
 .other {
-  width: 30%;
-  display: inline-block;
-  padding: 10px;
-  border-left-style: solid;
   border-color: #e7c6ff;
 }
 
 .military {
+  border-left-color: #FFE3BC;
+  height: 350px;
+}
+
+.professionalExperience, .education, .projects, .other, .military {
   width: 30%;
   display: inline-block;
   padding: 10px;
-  border-left-style: solid;
-  border-color: #FFE3BC;
+  margin: 5px;
+  border-style: solid;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.professionalExperience:hover, .education:hover, .projects:hover, .other:hover, .military:hover {
+  border-color: #388AFC;
+  background-color: #0d1117;
+  font-size: 1.2em;
 }
 
 /* Guy's Go-To Guide */
@@ -161,8 +160,7 @@ a:hover {
   border-top-style: solid;
   border-color: #FFE3BC;
   padding-top: 50px;
-  /* padding-bottom: 300px; */
-  height: 800px;
+  padding-bottom: 50px;
 }
 
 .gggHeader {
@@ -190,6 +188,87 @@ a:hover {
   background-color: #0d1117;
 }
 
+/* Contact Form */
+.formSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactText {
+  text-align: left;
+  width: 15%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #E6FEFE;
+  padding: 10px;
+}
+
+.formLabel, .formInput, .formTextArea {
+  display: block;
+  width: 100%;
+}
+
+.contactUL {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contactLI {
+  padding: 9px;
+}
+
+.contactSpan {
+  color: #E6FEFE;
+}
+
+input[type="submit"] {
+  background: #E6FEFE;
+  color: #2ACAE6;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.form {
+  width: 25%;
+  margin: 80px 5%;
+}
+
+.formHeading {
+  text-align: center;
+}
+
+.contactForm {
+  background-color: #0d1117;
+  padding: 40px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #E6FEFE;
+  /* overflow: hidden; */
+}
+
+.requiredStar {
+  color: #2ACAE6;
+}
+
+.formInput, .formTextArea {
+  width: 100%;
+  padding: 9px 20px;
+  border: 1px solid #e1e2eb;
+  background-color: #e9ecef;
+  color: black;
+  box-sizing: border-box;
+  font-size: 1rem;
+  line-height: 29px;
+  line-height: 2rem;
+  border-radius: 3px;
+  line-height: 2rem;
+}
+
+/* footer */
 footer {
   height: 100px;
   background-color: #FFE3BC;
