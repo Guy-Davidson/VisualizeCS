@@ -27,7 +27,7 @@ function updatearraySizeSliderPick(size) {
 
 function arrayBarColor(barVal) {
   if (barVal < 10) {
-    return "#041D61";
+    return "#001845";
   } else if (barVal < 20) {
     return "#2C306E";
   } else if (barVal < 30) {
@@ -57,10 +57,12 @@ function arrayBarNumberColor(barVal) {
 }
 
 function reset() {
+
   document.getElementById('arraySizeSliderPick').value = 0;
 
   let view = document.querySelector('.view');
   view.innerHTML = "";
+
 }
 
 function bubbleSortSelected(_this) {
@@ -84,9 +86,8 @@ function notbubbleSortSelected(_this) {
   sortTypePort.appendChild(newSpan);
 }
 
-function sort() {
+async function sort() {
   let view = document.querySelector('.view');
-
   let bars = view.querySelectorAll("div");
 
   let n = bars.length
@@ -99,10 +100,16 @@ function sort() {
 
       let val1 = parseInt(bars[j].firstChild.textContent);
       let val2 = parseInt(bars[j + 1].firstChild.textContent);
+
       if (val1 > val2) {
         view.insertBefore(bars[j + 1], bars[j]);
         bars = view.querySelectorAll("div");
+        await sleep(70);
       }
     }
   }
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
