@@ -154,13 +154,21 @@
         <p>Choose Array Size:</p><br>
         <div class="arraySizeButtons">
           <p class="arraySizeButtonsOne" style="margin-top:18px">5</p>
-          <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="5" max="25" onchange="updatearraySizeSliderPick(this.value);">
+          <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="5" max="100" onchange="updatearraySizeSliderPick(this.value);">
           <p class="arraySizeButtonsOne" style="margin-top:18px">25</p>
         </div>
         <div class="arraySizeButtonsPick">
           <input type="text" class="arraySizeButtonsTwo" id="arraySizeSliderPick" value="">
         </div>
+      </div>
 
+      <div class="sortingSpeed">
+        <p>Choose Sorting Speed:</p><br>
+        <div class="arraySizeButtons">
+          <p class="arraySizeButtonsOne" style="margin-top:18px">fast</p>
+          <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="20" max="150" onchange="updateSortingSpeedSliderPick(this.value);">
+          <p class="arraySizeButtonsOne" style="margin-top:18px">slow</p>
+        </div>
       </div>
 
       <div class="action">

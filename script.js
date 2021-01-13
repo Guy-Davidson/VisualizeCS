@@ -1,3 +1,7 @@
+//Global vars:
+let sortingSpeed = 100;
+
+
 function updatearraySizeSliderPick(size) {
   // update selected value to slider view button:
   document.getElementById('arraySizeSliderPick').value = size;
@@ -9,19 +13,18 @@ function updatearraySizeSliderPick(size) {
   for (let i = 0; i < size; i++) {
 
     const newDiv = document.createElement("div");
-    newDiv.className = "elem" + i;
-
     const newDivSpan = document.createElement("span");
+
     let barVal = Math.floor((Math.random() * 100) + 1);
     let t = document.createTextNode(barVal);
+
     newDivSpan.style.color = arrayBarNumberColor(barVal);
     newDiv.style.width = barVal + "%";
     newDiv.style.backgroundColor = arrayBarColor(barVal);
+
     newDivSpan.appendChild(t);
     newDiv.appendChild(newDivSpan);
-
     view.appendChild(newDiv);
-
   }
 }
 
@@ -86,6 +89,10 @@ function notbubbleSortSelected(_this) {
   sortTypePort.appendChild(newSpan);
 }
 
+function updateSortingSpeedSliderPick(speed) {
+  sortingSpeed = speed;
+}
+
 async function sort() {
   let view = document.querySelector('.view');
   let bars = view.querySelectorAll("div");
@@ -104,7 +111,7 @@ async function sort() {
       if (val1 > val2) {
         view.insertBefore(bars[j + 1], bars[j]);
         bars = view.querySelectorAll("div");
-        await sleep(70);
+        await sleep(sortingSpeed);
       }
     }
   }
