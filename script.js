@@ -65,6 +65,11 @@ function reset() {
 
 function bubbleSortSelected(_this) {
   _this.style.backgroundColor = "#F0883E";
+  let sortTypePort = document.querySelector('.sortType');
+  let lastSpan = sortTypePort.querySelector("span");
+  if (lastSpan) {
+    sortTypePort.removeChild(lastSpan);
+  }
 }
 
 function notbubbleSortSelected(_this) {
@@ -80,5 +85,24 @@ function notbubbleSortSelected(_this) {
 }
 
 function sort() {
+  let view = document.querySelector('.view');
 
+  let bars = view.querySelectorAll("div");
+
+  let n = bars.length
+  let i = 0;
+  let j = 0;
+
+  for (i = 0; i < n - 1; i++) {
+
+    for (j = 0; j < n - 1 - i; j++) {
+
+      let val1 = parseInt(bars[j].firstChild.textContent);
+      let val2 = parseInt(bars[j + 1].firstChild.textContent);
+      if (val1 > val2) {
+        view.insertBefore(bars[j + 1], bars[j]);
+        bars = view.querySelectorAll("div");
+      }
+    }
+  }
 }
