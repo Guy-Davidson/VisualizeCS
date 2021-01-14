@@ -1,7 +1,6 @@
 //Global vars:
 let sortingSpeed = 100;
 
-
 function updatearraySizeSliderPick(size) {
   // update selected value to slider view button:
   document.getElementById('arraySizeSliderPick').value = size;
@@ -17,8 +16,13 @@ function updatearraySizeSliderPick(size) {
 
     let barVal = Math.floor((Math.random() * 100) + 1);
     let t = document.createTextNode(barVal);
+    let h = (670 / size) - 4;
 
     newDivSpan.style.color = arrayBarNumberColor(barVal);
+    newDivSpan.style.fontSize = h + "px";
+
+    newDiv.style.lineHeight = h + "px";
+    newDiv.style.fontSize = h + "px";
     newDiv.style.width = barVal + "%";
     newDiv.style.backgroundColor = arrayBarColor(barVal);
 

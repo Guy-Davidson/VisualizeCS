@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" id="top">
 
 <head>
   <meta charset="utf-8">
@@ -24,6 +24,11 @@
 <body>
 
   <div class="title">
+    <div class="nav">
+      <span><a href="#about">About Me</a></span>
+      <span><a href="#sorting">My Sorting Visualizer</a></span>
+      <span><a href="#contact">Contact Me</a></span>
+    </div>
     <h1 class="Guy">
       <p class="im">I'm </p>Guy
     </h1>
@@ -36,7 +41,7 @@
     <div class="aboutMe">
       <img class="pp" src="images/circle-cropped-pp.png" alt="My profile picture">
 
-      <h2 class="aboutMeHeader">About Me</h2>
+      <h2 class="aboutMeHeader" id="about">About Me</h2>
       <p>A highly motivated individual, with a strong passion to technology, innovation, creativity and excelency. Love people and extracting life to the fullest.
         Dedicated to become the best <strong>Full Stack Web developer</strong> I popossibly can,
         and to execute my knowledge in a variety of technologies such as: HTML, CSS, JavaScript, C, Python, Java, SQL Linux and more.</p>
@@ -113,7 +118,7 @@
     <div class="EndCV">
 
       <div class="other">
-        <h2>More</h2>
+        <h2>Hobbies & More</h2>
         <p>A member in the “IDC Tools” program, that includes:</p>
         <ul>
           <li>Introduction to Business Intelligence, by Idan Captain.</li>
@@ -133,7 +138,7 @@
   </div>
 
   <div class="applications">
-    <h1 class="gggHeader">My Sorting Visualizer</h1>
+    <h1 class="gggHeader" id="sorting">My Sorting Visualizer</h1>
 
 
     <div class="sort">
@@ -144,9 +149,9 @@
       <div class="sortType">
         <p>Choose Sorting Algorithm:</p><br>
         <div class="sortTypeButtons">
-          <input class="sortTypeButtonsOne" class="bubbleSortButton" type="button" name="bubble_Sort" value="Bubble Sort" onclick="bubbleSortSelected(this);">
-          <input class="sortTypeButtonsOne" class="mergeSortButton" type="button" name="Merge_Sort" value="Merge Sort" onclick="notbubbleSortSelected(this);">
-          <input class="sortTypeButtonsOne" class="quickSortButton" type="button" name="Quick_Sort" value="Quick Sort" onclick="notbubbleSortSelected(this);">
+          <input class="sortTypeButtonsOne" class="bubbleSortButton" type="button" name="bubble_Sort" value="Bubble" onclick="bubbleSortSelected(this);">
+          <input class="sortTypeButtonsOne" class="mergeSortButton" type="button" name="Merge_Sort" value="Merge" onclick="notbubbleSortSelected(this);">
+          <input class="sortTypeButtonsOne" class="quickSortButton" type="button" name="Quick_Sort" value="Quick" onclick="notbubbleSortSelected(this);">
         </div>
       </div>
 
@@ -154,8 +159,8 @@
         <p>Choose Array Size:</p><br>
         <div class="arraySizeButtons">
           <p class="arraySizeButtonsOne" style="margin-top:18px">5</p>
-          <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="5" max="100" onchange="updatearraySizeSliderPick(this.value);">
-          <p class="arraySizeButtonsOne" style="margin-top:18px">25</p>
+          <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="5" max="125" onchange="updatearraySizeSliderPick(this.value);">
+          <p class="arraySizeButtonsOne" style="margin-top:18px">125</p>
         </div>
         <div class="arraySizeButtonsPick">
           <input type="text" class="arraySizeButtonsTwo" id="arraySizeSliderPick" value="">
@@ -166,7 +171,7 @@
         <p>Choose Sorting Speed:</p><br>
         <div class="arraySizeButtons">
           <p class="arraySizeButtonsOne" style="margin-top:18px">fast</p>
-          <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="20" max="150" onchange="updateSortingSpeedSliderPick(this.value);">
+          <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="5" max="100" onchange="updateSortingSpeedSliderPick(this.value);">
           <p class="arraySizeButtonsOne" style="margin-top:18px">slow</p>
         </div>
       </div>
@@ -183,7 +188,7 @@
 
     <div class="formSection">
       <div class="form">
-        <h2 class="formHeading">Contact Me</h2>
+        <h2 class="formHeading" id="contact">Contact Me</h2>
 
         <form class="contactForm" action="mailto:guydav12@gmail.com?subject=Guy Website Response" enctype="text/plain" method="POST">
           <ul class=contactUL>

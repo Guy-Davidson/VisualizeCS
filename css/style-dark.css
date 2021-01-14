@@ -47,17 +47,34 @@ a:hover {
 
 /* Open Screen */
 .title {
-  background: url('../images/LunarEclipse.png') no-repeat center fixed;
+  background: url('../images/LunarEclipse.jpg') no-repeat center fixed;
   background-size: cover;
   height: 1080px;
   text-align: center;
   font-family: 'Berkshire Swash', cursive;
 }
 
+.nav {
+  font-size: 25px;
+}
+
+.nav span {
+  margin: auto 50px auto 50px;
+}
+
+.nav span a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav span a:hover {
+  color: #388AFC;
+}
+
 .Guy {
   color: white;
   position: relative;
-  top: 300px;
+  top: 20%;
   font-size: 9rem;
   font-weight: lighter;
   margin-bottom: 0;
@@ -73,7 +90,7 @@ a:hover {
 .imDesc {
   color: white;
   position: relative;
-  top: 300px;
+  top: 20%;
   font-size: 30px;
 }
 
@@ -147,10 +164,15 @@ a:hover {
   border-bottom-color: transparent;
 }
 
-.professionalExperience:hover, .education:hover, .projects:hover, .other:hover, .military:hover {
+.education:hover, .projects:hover, .other:hover, .military:hover {
   border-color: #388AFC;
   background-color: #0d1117;
   font-size: 1.2em;
+}
+
+.professionalExperience:hover {
+  border-color: #388AFC;
+  background-color: #0d1117;
 }
 
 /* Guy's Go-To Guide */
@@ -213,11 +235,11 @@ a:hover {
 
 .sortTypeButtonsOne, .actionButtonsOne {
   background-color: #13B9DB;
+  display: inline-block;
 }
 
 .sortTypeButtonsOne, .arraySizeButtonsOne, .actionButtonsOne {
   margin: 10px;
-  height: 40px;
   border-color: #FFE3BC;
   border-radius: 10px;
   font-family: 'Fraunces', serif;
