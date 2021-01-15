@@ -1,5 +1,61 @@
 //Global vars:
 let sortingSpeed = 100;
+let sortingAlg = 1 // 1:bubble, 2:merge, 3:quick
+let firstMerge = 1;
+
+
+// Sorting Algorithm Selector:
+function bubbleSortSelected(_this) {
+  _this.classList.toggle("selectedButton");
+
+  let b1 = document.getElementById("mergeSortBtn");
+  if (b1) {
+    b1.classList.remove("selectedButton");
+  }
+
+  let b2 = document.getElementById("quickSortBtn");
+  if (b2) {
+    b2.classList.remove("selectedButton");
+  }
+
+  sortingAlg = 1;
+
+}
+
+function mergeSortSelected(_this) {
+  _this.classList.toggle("selectedButton");
+
+  let b1 = document.getElementById("bubbleSortBtn");
+  if (b1) {
+    b1.classList.remove("selectedButton");
+  }
+
+  let b2 = document.getElementById("quickSortBtn");
+  if (b2) {
+    b2.classList.remove("selectedButton");
+  }
+
+  sortingAlg = 2;
+
+}
+
+function quickSortSelected(_this) {
+  _this.classList.toggle("selectedButton");
+
+  let b1 = document.getElementById("bubbleSortBtn");
+  if (b1) {
+    b1.classList.remove("selectedButton");
+  }
+
+  let b2 = document.getElementById("mergeSortBtn");
+  if (b2) {
+    b2.classList.remove("selectedButton");
+  }
+
+  sortingAlg = 3;
+}
+
+// Array Size Selector:
 
 function updatearraySizeSliderPick(size) {
   // update selected value to slider view button:
@@ -63,6 +119,13 @@ function arrayBarNumberColor(barVal) {
   return "#0d1117";
 }
 
+// Sorting Speed Selcetor:
+function updateSortingSpeedSliderPick(speed) {
+  sortingSpeed = speed;
+}
+
+
+//Sort & Reset:
 function reset() {
 
   document.getElementById('arraySizeSliderPick').value = 0;
@@ -72,32 +135,23 @@ function reset() {
 
 }
 
-function bubbleSortSelected(_this) {
-  _this.style.backgroundColor = "#F0883E";
-  let sortTypePort = document.querySelector('.sortType');
-  let lastSpan = sortTypePort.querySelector("span");
-  if (lastSpan) {
-    sortTypePort.removeChild(lastSpan);
+function sort() {
+  if (sortingAlg === 1) {
+    bubbleSort();
+
+  } else if (sortingAlg === 2) {
+
+    let view = document.querySelector('.view');
+    let bars = view.querySelectorAll("div");
+
+    mergeSort(0, bars.length - 1);
+
+  } else {
+    quickSort();
   }
 }
 
-function notbubbleSortSelected(_this) {
-  let sortTypePort = document.querySelector('.sortType');
-  let lastSpan = sortTypePort.querySelector("span");
-  if (lastSpan) {
-    sortTypePort.removeChild(lastSpan);
-  }
-  const newSpan = document.createElement("span");
-  const t = document.createTextNode("currently only bubble sort is implemented.");
-  newSpan.appendChild(t);
-  sortTypePort.appendChild(newSpan);
-}
-
-function updateSortingSpeedSliderPick(speed) {
-  sortingSpeed = speed;
-}
-
-async function sort() {
+async function bubbleSort() {
   let view = document.querySelector('.view');
   let bars = view.querySelectorAll("div");
 
@@ -119,6 +173,55 @@ async function sort() {
       }
     }
   }
+}
+
+function mergeSort(l, r) {
+
+  if (r > l) {
+    let m = Math.floor((l + r) / 2);
+
+    mergeSort(l, m);
+    mergeSort(m + 1, r);
+    merge(l, m, r);
+  }
+}
+
+async function merge(l, m, r) {
+  let view = document.querySelector('.view');
+  let bars = view.querySelectorAll("div");
+
+  //used to mark correct insertion place:
+  let indexDiv = document.createElement("div");
+  view.appendChild(indexDiv);
+  view.insertBefore(indexDiv, bars[l]);
+
+  //left and right arrays indexes:
+  let i = l;
+  let j = m + 1;
+
+  while (i <= m && j <= r) {
+    // if (!firstMerge) {
+    //   await sleep(100);
+    // } else {
+    //   firstMerge = 0;
+    // }
+    //
+    let val1 = parseInt(bars[i].firstChild.textContent);
+    let val2 = parseInt(bars[j].firstChild.textContent);
+
+    if (val1 < val2) {
+      view.insertBefore(bars[i], indexDiv);
+      i++;
+    } else {
+      view.insertBefore(bars[j], indexDiv);
+      j++;
+    }
+  }
+  view.removeChild(indexDiv);
+}
+
+function quickSort() {
+  let b = 6;
 }
 
 function sleep(ms) {

@@ -24,11 +24,6 @@
 <body>
 
   <div class="title">
-    <div class="nav">
-      <span><a href="#about">About Me</a></span>
-      <span><a href="#sorting">My Sorting Visualizer</a></span>
-      <span><a href="#contact">Contact Me</a></span>
-    </div>
     <h1 class="Guy">
       <p class="im">I'm </p>Guy
     </h1>
@@ -42,185 +37,110 @@
       <img class="pp" src="images/circle-cropped-pp.png" alt="My profile picture">
 
       <h2 class="aboutMeHeader" id="about">About Me</h2>
-      <p>A highly motivated individual, with a strong passion to technology, innovation, creativity and excelency. Love people and extracting life to the fullest.
-        Dedicated to become the best <strong>Full Stack Web developer</strong> I popossibly can,
-        and to execute my knowledge in a variety of technologies such as: HTML, CSS, JavaScript, C, Python, Java, SQL Linux and more.</p>
-    </div>
-
-    <div class="middleCV">
-
-      <div class="professionalExperience">
-        <h2>Professional Experience</h2>
-        <div class="calculus">
-          <table>
-            <tr>
-              <td class="dates" nowrap>2018 to date</td>
-              <td>Calculus Private Tutor (student position) <br>Online & offline tutoring</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>Tutor students (approx. 20) to improve their grades and understanding.</td>
-            </tr>
-          </table>
-
-        </div>
-        <div class="music">
-          <table>
-            <tr>
-              <td class="dates" nowrap>2013 – 2017</td>
-              <td>Setup a homemade musical production studio for customers and partners.</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>Setup and managed a musical school teaching piano & guitar for approx. 100 students.</td>
-            </tr>
-          </table>
-
-        </div>
-      </div>
-
-      <div class="education">
-        <h2>Education</h2>
-        <table>
-          <tr>
-            <td class="dates" nowrap>2019 - to date</td>
-            <td>Studying towards my B.Sc in Computer Science – IDC Herzliya.</td>
-          </tr>
-
-          <tr>
-            <td class="dates" nowrap>2017 – 2019</td>
-            <td>Studied Electrical Engineering – Tel-Aviv University.</td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="projects">
-        <h2>Projects</h2>
-        <div class="github">
-          <p><a href="https://github.com/Guy-Davidson">Github:</a>
-            C lang Project, a self-designed memory allocator.
-          </p>
-        </div>
-        <div class="datacamp">
-          <p><a href="https://www.datacamp.com/profile/Guy-Davidson">DataCamp:</a>
-            SQL and Python, data-oriented courses completed.
-          </p>
-        </div>
-        <div class="linkedin">
-          <p><a href="linkedin.com/in/guy-davidson">Linkedin:</a>
-            Full stack complete path.
-          </p>
-        </div>
-      </div>
+      <p style="line-height:1.7;">A highly motivated individual, with a strong passion to technology, innovation, creativity and excelency.<br>
+        Love people and extracting life to the fullest.<br> Currently Studying towards my B.Sc in Computer Science at IDC Herzliya.<br>
+        I'm dedicated to become the best <strong>Full Stack Web developer</strong> I popossibly can.<br>
+        In this site I'll execute my knowledge in a variety of technologies such as: HTML, CSS, JavaScript, and more.
+      </p>
     </div>
 
 
-    <div class="EndCV">
+    <div class="applications">
+      <h1 class="gggHeader" id="sorting">My Sorting Visualizer</h1>
 
-      <div class="other">
-        <h2>Hobbies & More</h2>
-        <p>A member in the “IDC Tools” program, that includes:</p>
-        <ul>
-          <li>Introduction to Business Intelligence, by Idan Captain.</li>
-          <li>Real Estate Entrepreneurship, by “Azimuth”.</li>
-        </ul>
-        <p>A member of the IDC Cyber Club: IDCYBER.</p>
-        <p>Voluntarily Train & tutor high school students towards leadership within “Tzemach”.</p>
+
+      <div class="sort">
+
+        <div class="view">
+        </div>
+
+        <div class="sortType">
+          <p>Choose Sorting Algorithm:</p><br>
+          <div class="sortTypeButtons">
+            <input id="bubbleSortBtn" class="sortTypeButtonsOne selectedButton" type="button" name="bubble_Sort" value="Bubble" onclick="bubbleSortSelected(this);">
+            <input id="mergeSortBtn" class="sortTypeButtonsOne" type="button" name="Merge_Sort" value="Merge" onclick="mergeSortSelected(this);">
+            <input id="quickSortBtn" class="sortTypeButtonsOne" type="button" name="Quick_Sort" value="Quick" onclick="quickSortSelected(this);">
+          </div>
+        </div>
+
+        <div class="arraySize">
+          <p>Choose Array Size:</p><br>
+          <div class="arraySizeButtons">
+            <p class="arraySizeButtonsOne" style="margin-top:18px">5</p>
+            <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="5" max="125" onchange="updatearraySizeSliderPick(this.value);">
+            <p class="arraySizeButtonsOne" style="margin-top:18px">125</p>
+          </div>
+          <div class="arraySizeButtonsPick">
+            <input type="text" class="arraySizeButtonsTwo" id="arraySizeSliderPick" value="">
+          </div>
+        </div>
+
+        <div class="sortingSpeed">
+          <p>Choose Sorting Speed:</p><br>
+          <div class="arraySizeButtons">
+            <p class="arraySizeButtonsOne" style="margin-top:18px">fast</p>
+            <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="5" max="100" onchange="updateSortingSpeedSliderPick(this.value);">
+            <p class="arraySizeButtonsOne" style="margin-top:18px">slow</p>
+          </div>
+        </div>
+
+        <div class="action">
+          <div class="actionButtons">
+            <input class="actionButtonsOne" type="button" name="sort" value="Sort!" onclick="sort();">
+            <input class="actionButtonsOne" type="button" name="reset" value="Reset" onclick="reset();">
+          </div>
+        </div>
+
       </div>
 
-      <div class="military">
-        <h2>Military</h2>
-        <p>Three years of service in the Combat Unit “Yahalom” which specialize in underground warfare.
-          Fought mainly in Gaza border, to prevent terror through tunnel passage. </p>
+
+      <div class="formSection">
+        <div class="contactText">
+          <p>If you would like to get in touch with me or comment on anything
+            I've presented in my site, please fell free to send me a Message
+            via the contact form. Thanks!</p>
+        </div>
+
+        <div class="form">
+          <h2 class="formHeading" id="contact">Contact Me</h2>
+
+          <form class="contactForm" action="mailto:guydav12@gmail.com?subject=Guy Website Response" enctype="text/plain" method="POST">
+            <ul class=contactUL>
+              <li class="contactLI">
+                <label for="name" class="formLabel"><span class="contactSpan">Name <span class="requiredStar">*</span></span></label>
+                <input type="text" name="user_name" class="formInput">
+              </li>
+              <li class="contactLI">
+                <label for="mail" class="formLabel"><span class="contactSpan">Email <span class="requiredStar">*</span></span></label>
+                <input type="email" name="user_email" class="formInput">
+              </li>
+              <li class="contactLI">
+                <label for="msg" class="formLabel"><span class="contactSpan">Message</span></label>
+                <textarea rows="3" cols="50" class="formTextArea" name=user_message></textarea>
+              </li>
+              <li class="contactLI">
+                <input type="submit" class="formInput">
+              </li>
+            </ul>
+          </form>
+        </div>
+        <!-- Load font awesome icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- The social media icon bar -->
+        <div class="icon-bar">
+          <a href="https://www.linkedin.com/in/guy-davidson/" class="linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="https://github.com/Guy-Davidson" class="github"><i class="fa fa-github"></i></a>
+          <a href="#top" class="youtube"><i class="fa fa-youtube"></i></a>
+          <a href="https://www.facebook.com/guy.davidson.5" class="facebook"><i class="fa fa-facebook"></i></a>
+        </div>
+
       </div>
     </div>
 
-  </div>
-
-  <div class="applications">
-    <h1 class="gggHeader" id="sorting">My Sorting Visualizer</h1>
-
-
-    <div class="sort">
-
-      <div class="view">
-      </div>
-
-      <div class="sortType">
-        <p>Choose Sorting Algorithm:</p><br>
-        <div class="sortTypeButtons">
-          <input class="sortTypeButtonsOne" class="bubbleSortButton" type="button" name="bubble_Sort" value="Bubble" onclick="bubbleSortSelected(this);">
-          <input class="sortTypeButtonsOne" class="mergeSortButton" type="button" name="Merge_Sort" value="Merge" onclick="notbubbleSortSelected(this);">
-          <input class="sortTypeButtonsOne" class="quickSortButton" type="button" name="Quick_Sort" value="Quick" onclick="notbubbleSortSelected(this);">
-        </div>
-      </div>
-
-      <div class="arraySize">
-        <p>Choose Array Size:</p><br>
-        <div class="arraySizeButtons">
-          <p class="arraySizeButtonsOne" style="margin-top:18px">5</p>
-          <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="5" max="125" onchange="updatearraySizeSliderPick(this.value);">
-          <p class="arraySizeButtonsOne" style="margin-top:18px">125</p>
-        </div>
-        <div class="arraySizeButtonsPick">
-          <input type="text" class="arraySizeButtonsTwo" id="arraySizeSliderPick" value="">
-        </div>
-      </div>
-
-      <div class="sortingSpeed">
-        <p>Choose Sorting Speed:</p><br>
-        <div class="arraySizeButtons">
-          <p class="arraySizeButtonsOne" style="margin-top:18px">fast</p>
-          <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="5" max="100" onchange="updateSortingSpeedSliderPick(this.value);">
-          <p class="arraySizeButtonsOne" style="margin-top:18px">slow</p>
-        </div>
-      </div>
-
-      <div class="action">
-        <div class="actionButtons">
-          <input class="actionButtonsOne" type="button" name="sort" value="Sort!" onclick="sort();">
-          <input class="actionButtonsOne" type="button" name="reset" value="Reset" onclick="reset();">
-        </div>
-      </div>
-
-    </div>
-
-
-    <div class="formSection">
-      <div class="form">
-        <h2 class="formHeading" id="contact">Contact Me</h2>
-
-        <form class="contactForm" action="mailto:guydav12@gmail.com?subject=Guy Website Response" enctype="text/plain" method="POST">
-          <ul class=contactUL>
-            <li class="contactLI">
-              <label for="name" class="formLabel"><span class="contactSpan">Name <span class="requiredStar">*</span></span></label>
-              <input type="text" name="user_name" class="formInput">
-            </li>
-            <li class="contactLI">
-              <label for="mail" class="formLabel"><span class="contactSpan">Email <span class="requiredStar">*</span></span></label>
-              <input type="email" name="user_email" class="formInput">
-            </li>
-            <li class="contactLI">
-              <label for="msg" class="formLabel"><span class="contactSpan">Message</span></label>
-              <textarea rows="3" cols="50" class="formTextArea" name=user_message></textarea>
-            </li>
-            <li class="contactLI">
-              <input type="submit" class="formInput">
-            </li>
-          </ul>
-        </form>
-      </div>
-      <div class="contactText">
-        <p>If you would like to get in touch with me or comment on anything
-          I've presented in my site, please fell free to send me a Message
-          via the contact form. Thanks!</p>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <h2 class="footerText">Guy Davidson</h2>
-  </footer>
+    <footer>
+      <h2 class="footerText">Guy Davidson</h2>
+    </footer>
 
 
 </body>

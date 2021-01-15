@@ -1,1 +1,1 @@
-"# Guy-Goto-Guide" 
+to run my website simply double-click on index.html.
