@@ -1,7 +1,7 @@
 //Global vars:
 let sortingSpeed = 100;
 let sortingAlg = 1 // 1:bubble, 2:merge, 3:quick
-let firstMerge = 1;
+let halt = 1;
 
 
 // Sorting Algorithm Selector:
@@ -175,50 +175,42 @@ async function bubbleSort() {
   }
 }
 
-function mergeSort(l, r) {
 
-  if (r > l) {
-    let m = Math.floor((l + r) / 2);
+async function mergeSort(l, r) {
+  for (let m = 1; m <= r - l; m = 2 * m) {
+    for (let i = l; i < r; i += 2 * m) {
 
-    mergeSort(l, m);
-    mergeSort(m + 1, r);
-    merge(l, m, r);
-  }
-}
+      let from = i;
+      let mid = i + m - 1;
+      let to = Math.min(i + 2 * m - 1, r);
+      // merge(from, mid, to);
 
-async function merge(l, m, r) {
-  let view = document.querySelector('.view');
-  let bars = view.querySelectorAll("div");
+      let view = document.querySelector('.view');
+      let bars = view.querySelectorAll("div");
 
-  //used to mark correct insertion place:
-  let indexDiv = document.createElement("div");
-  view.appendChild(indexDiv);
-  view.insertBefore(indexDiv, bars[l]);
+      //left and right arrays indexes:
+      let p = from;
+      let j = mid + 1;
+      let k = from;
 
-  //left and right arrays indexes:
-  let i = l;
-  let j = m + 1;
+      while (p <= mid && j <= to) {
+        let val1 = parseInt(bars[p].firstChild.textContent);
+        let val2 = parseInt(bars[j].firstChild.textContent);
 
-  while (i <= m && j <= r) {
-    // if (!firstMerge) {
-    //   await sleep(100);
-    // } else {
-    //   firstMerge = 0;
-    // }
-    //
-    let val1 = parseInt(bars[i].firstChild.textContent);
-    let val2 = parseInt(bars[j].firstChild.textContent);
-
-    if (val1 < val2) {
-      view.insertBefore(bars[i], indexDiv);
-      i++;
-    } else {
-      view.insertBefore(bars[j], indexDiv);
-      j++;
+        if (val1 < val2) {
+          view.insertBefore(bars[p], view.querySelectorAll("div")[k]);
+          p++;
+        } else {
+          view.insertBefore(bars[j], view.querySelectorAll("div")[k]);
+          j++;
+        }
+        k++;
+        await sleep(sortingSpeed);
+      }
     }
   }
-  view.removeChild(indexDiv);
 }
+
 
 function quickSort() {
   let b = 6;
