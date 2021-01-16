@@ -324,3 +324,9 @@ footer {
 .selectedButton {
   background-color: #F0883E
 }
+
+.border {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #E6FEFE;
+}

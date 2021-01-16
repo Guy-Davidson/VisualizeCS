@@ -55,9 +55,10 @@
         </div>
 
         <div class="sortType">
-          <p>Choose Sorting Algorithm:</p><br>
+          <input id="setRaceBtn" class="actionButtonsOne selectedButton" type="button" name="race" value="Set Race" onclick="setRaceSelected(this);">
+          <p>Or choose Sorting Algorithm:</p><br>
           <div class="sortTypeButtons">
-            <input id="bubbleSortBtn" class="sortTypeButtonsOne selectedButton" type="button" name="bubble_Sort" value="Bubble" onclick="bubbleSortSelected(this);">
+            <input id="bubbleSortBtn" class="sortTypeButtonsOne" type="button" name="bubble_Sort" value="Bubble" onclick="bubbleSortSelected(this);">
             <input id="mergeSortBtn" class="sortTypeButtonsOne" type="button" name="Merge_Sort" value="Merge" onclick="mergeSortSelected(this);">
             <input id="quickSortBtn" class="sortTypeButtonsOne" type="button" name="Quick_Sort" value="Quick" onclick="quickSortSelected(this);">
           </div>
@@ -66,8 +67,8 @@
         <div class="arraySize">
           <p>Choose Array Size:</p><br>
           <div class="arraySizeButtons">
-            <p class="arraySizeButtonsOne" style="margin-top:18px">5</p>
-            <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="5" max="125" onchange="updatearraySizeSliderPick(this.value);">
+            <p class="arraySizeButtonsOne" style="margin-top:18px">25</p>
+            <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="25" max="125" onchange="updatearraySizeSliderPick(this.value, 'view');">
             <p class="arraySizeButtonsOne" style="margin-top:18px">125</p>
           </div>
           <div class="arraySizeButtonsPick">
@@ -86,7 +87,7 @@
 
         <div class="action">
           <div class="actionButtons">
-            <input class="actionButtonsOne" type="button" name="sort" value="Sort!" onclick="sort();">
+            <input class="actionButtonsOne" type="button" name="sort" value="Sort!" onclick="sort('view');">
             <input class="actionButtonsOne" type="button" name="reset" value="Reset" onclick="reset();">
           </div>
         </div>

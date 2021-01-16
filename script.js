@@ -1,7 +1,16 @@
+//Constants:
+const MIN_SORTING_DELAY = 5;
+const MAX_SORTING_DELAY = 100;
+
+const MIN_ARRAY_SIZE = 25;
+const MAX_ARRAY_SIZE = 125;
+
+
 //Global vars:
-let sortingSpeed = 100;
+let sortingSpeed = 50;
 let sortingAlg = 1 // 1:bubble, 2:merge, 3:quick
 let halt = 1;
+let isFirstToFinish = 1;
 
 
 // Sorting Algorithm Selector:
@@ -9,60 +18,95 @@ function bubbleSortSelected(_this) {
   _this.classList.toggle("selectedButton");
 
   let b1 = document.getElementById("mergeSortBtn");
-  if (b1) {
+  if (b1.classList.contains("selectedButton")) {
     b1.classList.remove("selectedButton");
   }
 
   let b2 = document.getElementById("quickSortBtn");
-  if (b2) {
+  if (b2.classList.contains("selectedButton")) {
     b2.classList.remove("selectedButton");
   }
 
-  sortingAlg = 1;
+  let b3 = document.getElementById("setRaceBtn");
+  if (b3.classList.contains("selectedButton")) {
+    b3.classList.remove("selectedButton");
+  }
 
+  sortingAlg = 1;
 }
 
 function mergeSortSelected(_this) {
   _this.classList.toggle("selectedButton");
 
   let b1 = document.getElementById("bubbleSortBtn");
-  if (b1) {
+  if (b1.classList.contains("selectedButton")) {
     b1.classList.remove("selectedButton");
   }
 
   let b2 = document.getElementById("quickSortBtn");
-  if (b2) {
+  if (b2.classList.contains("selectedButton")) {
     b2.classList.remove("selectedButton");
   }
 
-  sortingAlg = 2;
+  let b3 = document.getElementById("setRaceBtn");
+  if (b3.classList.contains("selectedButton")) {
+    b3.classList.remove("selectedButton");
+  }
 
+  sortingAlg = 2;
 }
 
 function quickSortSelected(_this) {
   _this.classList.toggle("selectedButton");
 
   let b1 = document.getElementById("bubbleSortBtn");
-  if (b1) {
+  if (b1.classList.contains("selectedButton")) {
     b1.classList.remove("selectedButton");
   }
 
   let b2 = document.getElementById("mergeSortBtn");
-  if (b2) {
+  if (b2.classList.contains("selectedButton")) {
     b2.classList.remove("selectedButton");
+  }
+
+  let b3 = document.getElementById("setRaceBtn");
+  if (b3.classList.contains("selectedButton")) {
+    b3.classList.remove("selectedButton");
   }
 
   sortingAlg = 3;
 }
 
+function setRaceSelected(_this) {
+  _this.classList.add("selectedButton");
+
+  let b1 = document.getElementById("bubbleSortBtn");
+  if (b1.classList.contains("selectedButton")) {
+    b1.classList.remove("selectedButton");
+  }
+
+  let b2 = document.getElementById("mergeSortBtn");
+  if (b2.classList.contains("selectedButton")) {
+    b2.classList.remove("selectedButton");
+  }
+
+  let b3 = document.getElementById("quickSortBtn");
+  if (b3.classList.contains("selectedButton")) {
+    b3.classList.remove("selectedButton");
+  }
+
+  race();
+}
+
 // Array Size Selector:
 
-function updatearraySizeSliderPick(size) {
+function updatearraySizeSliderPick(size, viewPort) {
   // update selected value to slider view button:
   document.getElementById('arraySizeSliderPick').value = size;
 
   //selcet view port and create 'size' bars:
-  let view = document.querySelector('.view');
+  let view = document.querySelector('.' + viewPort);
+  view.style.display = "block";
   view.innerHTML = "";
 
   for (let i = 0; i < size; i++) {
@@ -135,24 +179,24 @@ function reset() {
 
 }
 
-function sort() {
+function sort(viewPort) {
   if (sortingAlg === 1) {
-    bubbleSort();
+    bubbleSort(viewPort);
 
   } else if (sortingAlg === 2) {
 
-    let view = document.querySelector('.view');
+    let view = document.querySelector('.' + viewPort);
     let bars = view.querySelectorAll("div");
 
-    mergeSort(0, bars.length - 1);
+    mergeSort(0, bars.length - 1, viewPort);
 
   } else {
     quickSort();
   }
 }
 
-async function bubbleSort() {
-  let view = document.querySelector('.view');
+async function bubbleSort(viewPort) {
+  let view = document.querySelector('.' + viewPort);
   let bars = view.querySelectorAll("div");
 
   let n = bars.length
@@ -173,10 +217,18 @@ async function bubbleSort() {
       }
     }
   }
+
+  if (isFirstToFinish && viewPort !== "view") {
+    isFirstToFinish = 0
+    view.style.borderWidth = "3px";
+    view.style.borderColor = "green";
+  }
 }
 
 
-async function mergeSort(l, r) {
+async function mergeSort(l, r, viewPort) {
+  let view = document.querySelector('.' + viewPort);
+
   for (let m = 1; m <= r - l; m = 2 * m) {
     for (let i = l; i < r; i += 2 * m) {
 
@@ -185,7 +237,7 @@ async function mergeSort(l, r) {
       let to = Math.min(i + 2 * m - 1, r);
       // merge(from, mid, to);
 
-      let view = document.querySelector('.view');
+      // let view = document.querySelector('.' + viewPort);
       let bars = view.querySelectorAll("div");
 
       //left and right arrays indexes:
@@ -209,6 +261,12 @@ async function mergeSort(l, r) {
       }
     }
   }
+
+  if (isFirstToFinish && viewPort !== "view") {
+    isFirstToFinish = 0
+    view.style.borderWidth = "3px";
+    view.style.borderColor = "green";
+  }
 }
 
 
@@ -218,4 +276,46 @@ function quickSort() {
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+//Race
+function race() {
+  isFirstToFinish = 1;
+  sortingSpeed = MIN_SORTING_DELAY;
+  let view = document.querySelector('.view');
+  view.innerHTML = "";
+  view.style.display = "flex";
+
+  let sortingTypes = document.querySelectorAll('.sortTypeButtons input');
+
+  for (let i = 0; i < sortingTypes.length; i++) {
+    const newDiv = document.createElement("div");
+    newDiv.style.width = (100 / sortingTypes.length) + '%';
+    newDiv.classList.add('viewport' + i);
+    // newDiv.style.borderColor = "#E6FEFE";
+    newDiv.style.borderColor = "red";
+    view.appendChild(newDiv);
+    updatearraySizeSliderPick(MAX_ARRAY_SIZE, 'viewport' + i);
+  }
+
+  //Set Buble sort
+  const newSpan0 = document.createElement("span");
+  let text0 = document.createTextNode("Bubble Sort");
+  newSpan0.appendChild(text0);
+  document.querySelector('.viewport' + 0).appendChild(newSpan0);
+  bubbleSort('viewport' + 0);
+
+
+
+  //Set merge sort
+  const newSpan1 = document.createElement("span");
+  let text1 = document.createTextNode("Merge Sort");
+  newSpan1.appendChild(text1);
+  document.querySelector('.viewport' + 1).appendChild(newSpan1);
+
+
+  let viewPort = document.querySelector('.viewport' + 1);
+  let bars = viewPort.querySelectorAll("div");
+
+  mergeSort(0, bars.length - 1, 'viewport' + 1);
 }
