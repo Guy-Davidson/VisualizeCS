@@ -1,17 +1,96 @@
 //Constants:
-const MIN_SORTING_DELAY = 5;
-const MAX_SORTING_DELAY = 100;
-
 const MIN_ARRAY_SIZE = 25;
 const MAX_ARRAY_SIZE = 125;
 
+const MIN_SORTING_SPEED = 5;
+const MAX_SORTING_SPEED = 95;
+
+const MIN_SORTING_DELAY = 5;
+const MAX_SORTING_DELAY = 50;
 
 //Global vars:
-let sortingSpeed = 50;
+let sortingSpeed = MAX_SORTING_SPEED;
+let sortingDelay = MIN_SORTING_DELAY;
 let sortingAlg = 1 // 1:bubble, 2:merge, 3:quick
 let halt = 1;
 let isFirstToFinish = 1;
 
+//Set Race!
+function race() {
+  // reset:
+  isFirstToFinish = 1;
+  sortingDelay = MIN_SORTING_DELAY;
+  let view = document.querySelector('.view');
+  view.innerHTML = "";
+  view.style.display = "flex";
+
+  let sortingTypes = document.querySelectorAll('.sortTypeButtons input');
+
+  // create sub views:
+  for (let i = 0; i < sortingTypes.length; i++) {
+    const newDiv = document.createElement("div");
+    newDiv.style.width = (100 / sortingTypes.length) + '%';
+    newDiv.classList.add('viewport' + i);
+    newDiv.style.borderColor = "red";
+    view.appendChild(newDiv);
+    updatearraySizeSliderPick(MAX_ARRAY_SIZE, 'viewport' + i);
+  }
+
+  //Set Buble Sort
+  const newSpan0 = document.createElement("span");
+  let text0 = document.createTextNode("Bubble Sort");
+  newSpan0.appendChild(text0);
+  document.querySelector('.viewport' + 0).appendChild(newSpan0);
+  bubbleSort('viewport' + 0);
+
+
+
+  //Set merge sort
+  const newSpan1 = document.createElement("span");
+  let text1 = document.createTextNode("Merge Sort");
+  newSpan1.appendChild(text1);
+  document.querySelector('.viewport' + 1).appendChild(newSpan1);
+
+
+  let viewPort1 = document.querySelector('.viewport' + 1);
+  let bars1 = viewPort1.querySelectorAll("div");
+
+  mergeSort(0, bars1.length - 1, 'viewport' + 1);
+
+  //Set Quick Sort
+  const newSpan2 = document.createElement("span");
+  let text2 = document.createTextNode("Quick Sort");
+  newSpan2.appendChild(text2);
+  document.querySelector('.viewport' + 2).appendChild(newSpan2);
+
+
+  let viewPort2 = document.querySelector('.viewport' + 2);
+  let bars2 = viewPort2.querySelectorAll("div");
+
+  quickSort(0, bars2.length - 1, 'viewport' + 2);
+}
+
+function winner(viewPort) {
+  isFirstToFinish = 0
+
+  let view = document.querySelector('.' + viewPort);
+  let bars = view.querySelectorAll("div");
+  view.style.borderWidth = "2px";
+  view.style.borderColor = "#70e000";
+
+  for (let i = 0; i < bars.length; i++) {
+    const style = getComputedStyle(bars[i]);
+    const backgroundColor = style.backgroundColor;
+
+    setTimeout(() => {
+      bars[i].style.backgroundColor = "#70e000";
+    }, 10 * i);
+
+    setTimeout(() => {
+      bars[i].style.backgroundColor = backgroundColor;
+    }, 11 * i);
+  }
+}
 
 // Sorting Algorithm Selector:
 function bubbleSortSelected(_this) {
@@ -166,8 +245,8 @@ function arrayBarNumberColor(barVal) {
 // Sorting Speed Selcetor:
 function updateSortingSpeedSliderPick(speed) {
   sortingSpeed = speed;
+  sortingDelay = MAX_SORTING_DELAY - sortingSpeed;
 }
-
 
 //Sort & Reset:
 function reset() {
@@ -180,18 +259,24 @@ function reset() {
 }
 
 function sort(viewPort) {
+  let view = document.querySelector('.' + viewPort);
+  let bars = view.querySelectorAll("div");
+
+  if (bars.length == 0) {
+    updatearraySizeSliderPick(MAX_ARRAY_SIZE, 'view');
+  }
+
+  console.log(sortingAlg);
+
   if (sortingAlg === 1) {
     bubbleSort(viewPort);
 
   } else if (sortingAlg === 2) {
 
-    let view = document.querySelector('.' + viewPort);
-    let bars = view.querySelectorAll("div");
-
     mergeSort(0, bars.length - 1, viewPort);
 
   } else {
-    quickSort();
+    quickSort(0, bars.length - 1, viewPort);
   }
 }
 
@@ -213,18 +298,15 @@ async function bubbleSort(viewPort) {
       if (val1 > val2) {
         view.insertBefore(bars[j + 1], bars[j]);
         bars = view.querySelectorAll("div");
-        await sleep(sortingSpeed);
+        await sleep(sortingDelay);
       }
     }
   }
 
   if (isFirstToFinish && viewPort !== "view") {
-    isFirstToFinish = 0
-    view.style.borderWidth = "3px";
-    view.style.borderColor = "green";
+    winner(viewPort);
   }
 }
-
 
 async function mergeSort(l, r, viewPort) {
   let view = document.querySelector('.' + viewPort);
@@ -235,9 +317,8 @@ async function mergeSort(l, r, viewPort) {
       let from = i;
       let mid = i + m - 1;
       let to = Math.min(i + 2 * m - 1, r);
-      // merge(from, mid, to);
+      // merge(from, mid, to):
 
-      // let view = document.querySelector('.' + viewPort);
       let bars = view.querySelectorAll("div");
 
       //left and right arrays indexes:
@@ -257,65 +338,68 @@ async function mergeSort(l, r, viewPort) {
           j++;
         }
         k++;
-        await sleep(sortingSpeed);
+        await sleep(sortingDelay);
       }
     }
   }
 
   if (isFirstToFinish && viewPort !== "view") {
-    isFirstToFinish = 0
-    view.style.borderWidth = "3px";
-    view.style.borderColor = "green";
+    winner(viewPort);
   }
 }
 
+async function quickSort(l, h, viewPort) {
+  let view = document.querySelector('.' + viewPort);
 
-function quickSort() {
-  let b = 6;
+  let stack = [h - l + 1];
+  let top = -1;
+
+  stack[++top] = l;
+  stack[++top] = h;
+
+  while (top >= 0) {
+
+    h = stack[top--];
+    l = stack[top--];
+
+    //partiotion(l, h viewPort):
+    let x = parseInt(view.querySelectorAll("div")[h].firstChild.textContent);
+    let i = (l - 1);
+    for (let j = l; j <= h - 1; j++) {
+      if (parseInt(view.querySelectorAll("div")[j].firstChild.textContent) <= x) {
+        i++;
+        view.insertBefore(view.querySelectorAll("div")[j], view.querySelectorAll("div")[i].nextSibling);
+        view.insertBefore(view.querySelectorAll("div")[i], view.querySelectorAll("div")[j + 1]);
+        await sleep(sortingDelay);
+      }
+    }
+
+    if (i >= 0) {
+      view.insertBefore(view.querySelectorAll("div")[h], view.querySelectorAll("div")[i].nextSibling);
+    } else {
+      view.insertBefore(view.querySelectorAll("div")[h], view.querySelectorAll("div")[0]);
+    }
+    await sleep(sortingDelay);
+
+
+    let p = i + 1;
+
+    if (p - 1 > l) {
+      stack[++top] = l;
+      stack[++top] = p - 1;
+    }
+
+    if (p + 1 < h) {
+      stack[++top] = p + 1;
+      stack[++top] = h;
+    }
+  }
+
+  if (isFirstToFinish && viewPort !== "view") {
+    winner(viewPort);
+  }
 }
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-//Race
-function race() {
-  isFirstToFinish = 1;
-  sortingSpeed = MIN_SORTING_DELAY;
-  let view = document.querySelector('.view');
-  view.innerHTML = "";
-  view.style.display = "flex";
-
-  let sortingTypes = document.querySelectorAll('.sortTypeButtons input');
-
-  for (let i = 0; i < sortingTypes.length; i++) {
-    const newDiv = document.createElement("div");
-    newDiv.style.width = (100 / sortingTypes.length) + '%';
-    newDiv.classList.add('viewport' + i);
-    // newDiv.style.borderColor = "#E6FEFE";
-    newDiv.style.borderColor = "red";
-    view.appendChild(newDiv);
-    updatearraySizeSliderPick(MAX_ARRAY_SIZE, 'viewport' + i);
-  }
-
-  //Set Buble sort
-  const newSpan0 = document.createElement("span");
-  let text0 = document.createTextNode("Bubble Sort");
-  newSpan0.appendChild(text0);
-  document.querySelector('.viewport' + 0).appendChild(newSpan0);
-  bubbleSort('viewport' + 0);
-
-
-
-  //Set merge sort
-  const newSpan1 = document.createElement("span");
-  let text1 = document.createTextNode("Merge Sort");
-  newSpan1.appendChild(text1);
-  document.querySelector('.viewport' + 1).appendChild(newSpan1);
-
-
-  let viewPort = document.querySelector('.viewport' + 1);
-  let bars = viewPort.querySelectorAll("div");
-
-  mergeSort(0, bars.length - 1, 'viewport' + 1);
 }
