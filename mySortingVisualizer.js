@@ -1,6 +1,5 @@
 // My Sorting Visualizer
 
-
 //Constants:
 const MIN_ARRAY_SIZE = 25;
 const MAX_ARRAY_SIZE = 125;
@@ -14,13 +13,15 @@ const MAX_SORTING_DELAY = 50;
 const BUBBLE = 1;
 const MERGE = 2;
 const QUICK = 3;
+const RACE = 4;
 
 
 //Global vars:
 let sortingSpeed = MAX_SORTING_SPEED;
 let sortingDelay = MIN_SORTING_DELAY;
-let sortingAlg = 1 // 1:bubble, 2:merge, 3:quick
+let sortingAlg = BUBBLE;
 let isFirstToFinish = 1;
+let selectedBtn = RACE;
 
 //Set Race!
 async function race() {
@@ -138,6 +139,7 @@ function bubbleSortSelected(_this) {
   }
 
   sortingAlg = BUBBLE;
+  selectedBtn = BUBBLE;
 }
 
 function mergeSortSelected(_this) {
@@ -159,6 +161,7 @@ function mergeSortSelected(_this) {
   }
 
   sortingAlg = MERGE;
+  selectedBtn = MERGE;
 }
 
 function quickSortSelected(_this) {
@@ -180,6 +183,7 @@ function quickSortSelected(_this) {
   }
 
   sortingAlg = QUICK;
+  selectedBtn = QUICK;
 }
 
 function setRaceSelected(_this) {
@@ -200,6 +204,7 @@ function setRaceSelected(_this) {
     b3.classList.remove("selectedButton");
   }
 
+  selectedBtn = RACE;
   race();
 }
 
@@ -288,7 +293,21 @@ function sort(viewPort) {
   let view = document.querySelector('.' + viewPort);
   let bars = view.querySelectorAll("div");
 
-  if (bars.length == 0) {
+  //check if any sorting alg was selected:
+  if (selectedBtn == RACE) {
+    let actionBtn = document.getElementById("chooseSA");
+    let styles1 = getComputedStyle(actionBtn);
+    let color = styles1.color;
+
+    actionBtn.style.color = "#F0883E";
+    setTimeout(() => {
+      actionBtn.style.color = color;
+    }, 500);
+
+    return;
+  }
+
+  if (bars.length == 0 || bars.length > MAX_ARRAY_SIZE) {
     updatearraySizeSliderPick(MAX_ARRAY_SIZE, 'view');
   }
 
