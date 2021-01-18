@@ -1,3 +1,6 @@
+// My Sorting Visualizer
+
+
 //Constants:
 const MIN_ARRAY_SIZE = 25;
 const MAX_ARRAY_SIZE = 125;
@@ -8,21 +11,44 @@ const MAX_SORTING_SPEED = 95;
 const MIN_SORTING_DELAY = 5;
 const MAX_SORTING_DELAY = 50;
 
+const BUBBLE = 1;
+const MERGE = 2;
+const QUICK = 3;
+
+
 //Global vars:
 let sortingSpeed = MAX_SORTING_SPEED;
 let sortingDelay = MIN_SORTING_DELAY;
 let sortingAlg = 1 // 1:bubble, 2:merge, 3:quick
-let halt = 1;
 let isFirstToFinish = 1;
 
 //Set Race!
-function race() {
+async function race() {
   // reset:
   isFirstToFinish = 1;
   sortingDelay = MIN_SORTING_DELAY;
   let view = document.querySelector('.view');
   view.innerHTML = "";
+
+  //count down:
+  let counter = document.createElement("h1");
+  let t = document.createTextNode("3");
+  counter.style.fontSize = "9rem";
+  view.style.textAlign = "center";
+  counter.appendChild(t);
+  view.appendChild(counter);
+
+  for (let k = 1; k < 4; k++) {
+    setTimeout(() => {
+      counter.textContent = 3 - k;
+    }, k * 1000);
+  }
+
+  await sleep(4000);
+
+  view.innerHTML = "";
   view.style.display = "flex";
+  view.style.textAlign = "left";
 
   let sortingTypes = document.querySelectorAll('.sortTypeButtons input');
 
@@ -111,7 +137,7 @@ function bubbleSortSelected(_this) {
     b3.classList.remove("selectedButton");
   }
 
-  sortingAlg = 1;
+  sortingAlg = BUBBLE;
 }
 
 function mergeSortSelected(_this) {
@@ -132,7 +158,7 @@ function mergeSortSelected(_this) {
     b3.classList.remove("selectedButton");
   }
 
-  sortingAlg = 2;
+  sortingAlg = MERGE;
 }
 
 function quickSortSelected(_this) {
@@ -153,7 +179,7 @@ function quickSortSelected(_this) {
     b3.classList.remove("selectedButton");
   }
 
-  sortingAlg = 3;
+  sortingAlg = QUICK;
 }
 
 function setRaceSelected(_this) {
@@ -266,12 +292,13 @@ function sort(viewPort) {
     updatearraySizeSliderPick(MAX_ARRAY_SIZE, 'view');
   }
 
-  console.log(sortingAlg);
+  view = document.querySelector('.' + viewPort);
+  bars = view.querySelectorAll("div");
 
-  if (sortingAlg === 1) {
+  if (sortingAlg === BUBBLE) {
     bubbleSort(viewPort);
 
-  } else if (sortingAlg === 2) {
+  } else if (sortingAlg === MERGE) {
 
     mergeSort(0, bars.length - 1, viewPort);
 
