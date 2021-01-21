@@ -5,7 +5,7 @@ const MIN_ARRAY_SIZE = 25;
 const MAX_ARRAY_SIZE = 125;
 
 const MIN_SORTING_SPEED = 5;
-const MAX_SORTING_SPEED = 95;
+const MAX_SORTING_SPEED = 45;
 
 const MIN_SORTING_DELAY = 5;
 const MAX_SORTING_DELAY = 50;
@@ -28,6 +28,10 @@ async function race() {
   // reset:
   isFirstToFinish = 1;
   sortingDelay = MIN_SORTING_DELAY;
+  let sortingSpeedSlider = document.getElementById("sortingSpeedSlider");
+  sortingSpeedSlider.value = MAX_SORTING_SPEED;
+  let arraySizeSlider = document.getElementById("arraySizeSlider");
+  arraySizeSlider.value = MAX_ARRAY_SIZE;
   let view = document.querySelector('.view');
   view.innerHTML = "";
 
@@ -102,7 +106,6 @@ function winner(viewPort) {
 
   let view = document.querySelector('.' + viewPort);
   let bars = view.querySelectorAll("div");
-  view.style.borderWidth = "2px";
   view.style.borderColor = "#70e000";
 
   for (let i = 0; i < bars.length; i++) {

@@ -6,7 +6,6 @@
   <title>Guy's Goto Guide</title>
 
   <!-- Custom CSS Stylesheets -->
-  <!-- <link rel="stylesheet" href="css/style-light.css"> -->
   <link rel="stylesheet" href="css/style-dark.css">
 
   <!-- My favicon -->
@@ -16,9 +15,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Fraunces&display=swap" rel="stylesheet">
 
-  <!-- JavaScript Source File -->
+  <!-- JavaScript Source Files -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
   <script src="mySortingVisualizer.js" defer></script>
-
+  <script src="myPathFinder.js" defer></script>
 </head>
 
 <body>
@@ -46,7 +46,7 @@
 
 
     <div class="applications">
-      <h1 class="gggHeader" id="sorting">My Sorting Visualizer</h1>
+      <h1 class="sortingHeader" id="sorting">My Sorting Visualizer</h1>
 
 
       <div class="sort">
@@ -68,7 +68,7 @@
           <p>Choose Array Size:</p><br>
           <div class="arraySizeButtons">
             <p class="arraySizeButtonsOne" style="margin-top:18px">25</p>
-            <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="25" max="125" onchange="updatearraySizeSliderPick(this.value, 'view');">
+            <input type="range" id="arraySizeSlider" class="arraySizeButtonsOne" min="25" max="125" onchange="updatearraySizeSliderPick(this.value, 'view');">
             <p class="arraySizeButtonsOne" style="margin-top:18px">125</p>
           </div>
           <div class="arraySizeButtonsPick">
@@ -80,7 +80,7 @@
           <p>Choose Sorting Speed:</p><br>
           <div class="arraySizeButtons">
             <p class="arraySizeButtonsOne" style="margin-top:18px">slow</p>
-            <input type="range" class="arraySizeButtonsOne" class="arraySizeSlider" min="0" max="45" onchange="updateSortingSpeedSliderPick(this.value);">
+            <input type="range" id="sortingSpeedSlider" class="arraySizeButtonsOne" class="arraySizeSlider" min="0" max="45" onchange="updateSortingSpeedSliderPick(this.value);">
             <p class="arraySizeButtonsOne" style="margin-top:18px">fast</p>
           </div>
         </div>
@@ -92,6 +92,57 @@
           </div>
         </div>
 
+      </div>
+
+
+      <div class="pathFinder">
+        <h1 class="pathHeader">My Path Finder</h1>
+
+        <div class="maze">
+
+          <div class="mazeView">
+          </div>
+
+          <div class="pathType">
+            <input id="setPathRaceBtn" class="actionButtonsOne selectedButton" type="button" name="race" value="Set Race" onclick="">
+            <p id="chooseSA">Or choose Path Finding Algorithm:</p><br>
+            <div class="pathTypeButtons">
+              <input id="dfsBtn" class="pathTypeButtonsOne" type="button" value="DFS" onclick="">
+              <input id="bfsBtn" class="pathTypeButtonsOne" type="button" value="BFS" onclick="">
+              <input id="dijkstraBtn" class="pathTypeButtonsOne" type="button" value="Dijkstra" onclick="">
+            </div>
+          </div>
+
+          <div class="mazeSize">
+            <p>Choose Maze Size:</p><br>
+            <div class="pathSizeButtons">
+              <p class="pathSizeButtonsOne" style="margin-top:18px">25</p>
+              <input type="range" id="mazeSizeSlider" class="mazeSizeButtonsOne" min="25" max="125" onchange="generateMaze(this.value, 'view')">
+              <p class="pathSizeButtonsOne" style="margin-top:18px">125</p>
+            </div>
+            <div class="pathSizeButtonsPick">
+              <input type="text" class="mazeSizeButtonsTwo" id="mazeSizeSliderPick" value="">
+            </div>
+          </div>
+
+          <div class="pathFindingSpeed">
+            <p>Choose Path Finding Speed:</p><br>
+            <div class="pathSizeButtons">
+              <p class="pathSizeButtonsOne" style="margin-top:18px">slow</p>
+              <input type="range" id="pathSpeedSlider" class="mazeSizeButtonsOne" class="pathSizeSlider" min="0" max="45" onchange="">
+              <p class="mazeSizeButtonsOne" style="margin-top:18px">fast</p>
+            </div>
+          </div>
+
+          <div class="mazeAction">
+            <div class="mazeActionButtons">
+              <input class="actionButtonsOne" type="button" value="Maze" onclick="generateMaze(30, 'mazeView')">
+              <input class="actionButtonsOne" type="button" value="Find Path!" onclick="">
+              <input class="actionButtonsOne" type="button" value="Reset" onclick="">
+            </div>
+          </div>
+
+        </div>
       </div>
 
 
@@ -138,6 +189,7 @@
 
       </div>
     </div>
+
 
     <footer>
       <h2 class="footerText">Guy Davidson</h2>

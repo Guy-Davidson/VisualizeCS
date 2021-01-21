@@ -127,14 +127,9 @@ a:hover {
   padding-bottom: 50px;
 }
 
-.gggHeader {
+.sortingHeader, .pathHeader {
   padding: 20px;
   text-align: center;
-  display: block;
-}
-
-.gggH2 {
-  color: #E6FEFE;
   display: block;
 }
 
@@ -142,9 +137,12 @@ a:hover {
 .sort {
   display: grid;
   grid-template-columns: 80% 20%;
+  width: 95%;
+  margin: auto;
+  height: 680px;
 }
 
-.view, .sortType, .arraySize, .action, .sortingSpeed {
+.view, .sortType, .arraySize, .sortingSpeed, .action {
   border-style: solid;
   border-width: 1px;
   border-color: #E6FEFE;
@@ -152,7 +150,6 @@ a:hover {
 }
 
 .view {
-  height: 680px;
   grid-column: 1;
   grid-row: 1/5;
 }
@@ -218,11 +215,87 @@ input[type=range] {
   margin-top: 50px;
 }
 
+/* Path Finder Visualizer */
+.pathHeader {
+  margin-top: 150px;
+}
+
+.maze {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  width: 85%;
+  margin: auto;
+  height: 680px;
+}
+
+.mazeView, .pathType, .mazeSize, .pathFindingSpeed, .mazeAction {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #E6FEFE;
+  padding: 5px;
+}
+
+.mazeView {
+  grid-column: 2;
+  grid-row: 1/3;
+}
+
+.pathType {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.mazeSize {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+input.mazeSizeButtonsOne[type=range] {
+  width: 45%;
+  background-color: #ddd;
+}
+
+.pathFindingSpeed {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.mazeAction {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.pathTypeButtons, .pathSizeButtons, .pathSizeButtonsPick, .mazeActionButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pathTypeButtonsOne, .actionButtonsOne {
+  background-color: #13B9DB;
+  display: inline-block;
+}
+
+.pathTypeButtonsOne, .pathSizeButtonsOne, .actionButtonsOne {
+  margin: 10px;
+  border-color: #FFE3BC;
+  border-radius: 10px;
+  font-family: 'Fraunces', serif;
+  font-size: 1.01rem;
+  color: #E6FEFE;
+}
+
+.mazeSizeButtonsTwo {
+  text-align: center;
+  width: 15%;
+}
+
 /* Contact Form */
 .formSection {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 150px;
 }
 
 .contactText {
