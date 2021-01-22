@@ -407,3 +407,13 @@ footer {
 .flashDiv {
   background-color: "green";
 }
+
+.mazeBorder {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #388AFC;
+}
+
+.dfsMarked {
+  background-color: #12257A;
+}
