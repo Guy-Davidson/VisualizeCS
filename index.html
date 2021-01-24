@@ -19,6 +19,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
   <script src="mySortingVisualizer.js" defer></script>
   <script src="myPathFinder.js" defer></script>
+  <script src="algo.js" defer></script>
 </head>
 
 <body>
@@ -104,41 +105,36 @@
           </div>
 
           <div class="pathType">
-            <input id="setPathRaceBtn" class="actionButtonsOne selectedButton" type="button" name="race" value="Set Race" onclick="">
+            <input id="mazeRaceBtn" class="actionButtonsOne selectedButton" type="button" name="race" value="Set Race" onclick="mazeRace('mazeView')">
             <p id="chooseSA">Or choose Path Finding Algorithm:</p><br>
             <div class="pathTypeButtons">
-              <input id="dfsBtn" class="pathTypeButtonsOne" type="button" value="DFS" onclick="DFS(vertices[1]);">
-              <input id="bfsBtn" class="pathTypeButtonsOne" type="button" value="BFS" onclick="">
-              <input id="dijkstraBtn" class="pathTypeButtonsOne" type="button" value="Dijkstra" onclick="">
+              <input id="dfsBtn" class="pathTypeButtonsOne" type="button" value="DFS" onclick="dfsSelected(this);"> <br>
+              <input id="bfsBtn" class="pathTypeButtonsOne" type="button" value="BFS" onclick="bfsSelected(this);">
             </div>
           </div>
 
-          <div class="mazeSize">
-            <p>Choose Maze Size:</p><br>
-            <div class="pathSizeButtons">
-              <p class="pathSizeButtonsOne" style="margin-top:18px">25</p>
-              <input type="range" id="mazeSizeSlider" class="mazeSizeButtonsOne" min="25" max="125" onchange="generateMaze(this.value, 'view')">
-              <p class="pathSizeButtonsOne" style="margin-top:18px">125</p>
+          <div class="mazeSettings">
+            <span><u>Settings</u></span><br>
+            <span>Maze Size:</span>
+            <div class="settings">
+              <input id="smallMaze" class="settingsButtons" type="button" value="Small" onclick="smallMazeSelected(this)">
+              <input id="mediumMaze" class="settingsButtons" type="button" value="Medium" onclick="mediumMazeSelected(this)">
+              <input id="largeMaze" class="settingsButtons" type="button" value="Large" onclick="largeMazeSelected(this)">
             </div>
-            <div class="pathSizeButtonsPick">
-              <input type="text" class="mazeSizeButtonsTwo" id="mazeSizeSliderPick" value="">
+
+            <span>Speed:</span>
+            <div class="settings">
+              <input id="slowSpeedBtn" class="settingsButtons" type="button" value="Slow" onclick="slowSpeedSelected(this)">
+              <input id="fastSpeedBtn" class="settingsButtons" type="button" value="Fast" onclick="fastSpeedSelected(this)">
             </div>
           </div>
 
-          <div class="pathFindingSpeed">
-            <p>Choose Path Finding Speed:</p><br>
-            <div class="pathSizeButtons">
-              <p class="pathSizeButtonsOne" style="margin-top:18px">slow</p>
-              <input type="range" id="pathSpeedSlider" class="mazeSizeButtonsOne" class="pathSizeSlider" min="0" max="45" onchange="">
-              <p class="mazeSizeButtonsOne" style="margin-top:18px">fast</p>
-            </div>
-          </div>
 
           <div class="mazeAction">
             <div class="mazeActionButtons">
-              <input class="actionButtonsOne" type="button" value="Maze" onclick="generateMaze(30, 'mazeView')">
-              <input class="actionButtonsOne" type="button" value="Find Path!" onclick="">
-              <input class="actionButtonsOne" type="button" value="Reset" onclick="">
+              <input class="mazeActionButtonsOne" type="button" value="Generate Maze" onclick="generateMaze('mazeView')">
+              <input id="findPathBtn" class="mazeActionButtonsOne" type="button" value="Find Path!" onclick="findPath();">
+              <input id="mazeResetBtn" class="mazeActionButtonsOne" type="button" value="Reset" onclick="mazeReset('mazeView')">
             </div>
           </div>
 
