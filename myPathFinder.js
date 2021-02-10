@@ -36,10 +36,11 @@ let edges = [];
 
 //Classes:
 class Vertex {
-  constructor(div, adjList = [], parent = null, isFinish = false, isDFSMarked = false, isBFSMarked = false) {
+  constructor(div, adjList = [], dfsParent = null, bfsParent = null, isFinish = false, isDFSMarked = false, isBFSMarked = false) {
     this.div = div;
     this.adjList = adjList;
-    this.parent = parent;
+    this.dfsParent = dfsParent;
+    this.bfsParent = bfsParent;
     this.isFinish = isFinish;
     this.isDFSMarked = isDFSMarked;
     this.isBFSMarked = isBFSMarked;
@@ -206,7 +207,7 @@ async function DFS(vertex) {
   while (stack.length > 0) {
     let v = stack.pop();
     if (v.isFinish == true) {
-      found(v, DFS_ALG);
+      foundDFS(v);
       return;
     }
     if (!v.isDFSMarked) {
@@ -215,7 +216,7 @@ async function DFS(vertex) {
       v.div.classList.remove("bfsMarked");
       v.adjList.forEach(u => {
         if(!u.isDFSMarked){
-          u.parent = v;
+          u.dfsParent = v;
           stack.push(u);
         }
       });
@@ -232,12 +233,12 @@ async function BFS(vertex) {
     let v = queue.shift();
     v.isBFSMarked = true;
     if (v.isFinish == true) {
-      found(v, BFS_ALG);
+      foundBFS(v);
       return;
     }
     v.adjList.forEach(u => {
       if (!u.isBFSMarked) {
-        u.parent = v;
+        u.bfsParent = v;
         u.div.classList.add("bfsMarked");
         u.div.classList.remove("dfsMarked");
         queue.push(u);
@@ -247,14 +248,24 @@ async function BFS(vertex) {
   }
 }
 
-async function found(v, alg){
-  let color = "";
-  alg === DFS_ALG ? color = "rgba(255, 104, 54, 0.75)" : color = "rgba(224, 170, 255, 0.75)";
-
+async function foundBFS(v){
+  let color = "rgba(224, 170, 255, 0.75)";
   let path = v;
+
   while(path){
     path.div.style.backgroundColor = color;
-    path = path.parent;
+    path = path.bfsParent;
+    await sleep(findingDelay);
+  }
+}
+
+async function foundDFS(v){
+  let color = "rgba(255, 104, 54, 0.75)";
+  let path = v;
+
+  while(path){
+    path.div.style.backgroundColor = color;
+    path = path.dfsParent;
     await sleep(findingDelay);
   }
 }
