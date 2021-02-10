@@ -6,13 +6,13 @@ Visualize CS is a Front-End library dedicated for visualizing and implementing s
 
 Choose a sorting algorithm: Bubble, Merge or Quick, the array size, and sorting speed, and see the sorting in action! Use **Set Race** to watch the algorithms compete who's faster.
 
-![alt text](https://github.com/[Guy-Davidson]/[VisualizeCS]/blob/[main]/./images/SortingVisualizer.png?raw=true)
+![](images/SortingVisualizer.png)
 
 ## Path Finder
 
 In this module the user can generate a maze, which is implemented as a graph with a Union-Find data structure to create a anywhere-to-anywhere passage. The maze has golden prize, and the DFS/BFS search algorithms are trying to get to it, each in his own unique way.
 
-![alt text](https://github.com/[Guy-Davidson]/[VisualizeCS]/blob/[main]/./images/PathFinder.png?raw=true)
+![](images/PathFinder.png)
 
 ## Contact
 If you would like to get in touch with me or comment on anything I've presented in my site, please fill free to send me a Message via the one of these links. Thanks!
