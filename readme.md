@@ -1,6 +1,7 @@
 # Visualize CS
 
 Visualize CS is a Front-End library dedicated for visualizing and implementing some of the better known Computer Science algorithms, for sorting and path finding.
+[Go to the Site](https://guy-davidson.github.io/VisualizeCS/)
 
 ## Sorting Visualizer
 
