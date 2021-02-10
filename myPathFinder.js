@@ -36,9 +36,10 @@ let edges = [];
 
 //Classes:
 class Vertex {
-  constructor(div, adjList = [], isFinish = false, isDFSMarked = false, isBFSMarked = false) {
+  constructor(div, adjList = [], parent = null, isFinish = false, isDFSMarked = false, isBFSMarked = false) {
     this.div = div;
     this.adjList = adjList;
+    this.parent = parent;
     this.isFinish = isFinish;
     this.isDFSMarked = isDFSMarked;
     this.isBFSMarked = isBFSMarked;
@@ -205,13 +206,19 @@ async function DFS(vertex) {
   while (stack.length > 0) {
     let v = stack.pop();
     if (v.isFinish == true) {
+      found(v, DFS_ALG);
       return;
     }
     if (!v.isDFSMarked) {
       v.isDFSMarked = true;
       v.div.classList.add("dfsMarked");
       v.div.classList.remove("bfsMarked");
-      v.adjList.forEach(v => stack.push(v));
+      v.adjList.forEach(u => {
+        if(!u.isDFSMarked){
+          u.parent = v;
+          stack.push(u);
+        }
+      });
     }
     await sleep(findingDelay);
   }
@@ -223,12 +230,14 @@ async function BFS(vertex) {
   queue.push(vertex);
   while (queue.length > 0) {
     let v = queue.shift();
+    v.isBFSMarked = true;
     if (v.isFinish == true) {
+      found(v, BFS_ALG);
       return;
     }
     v.adjList.forEach(u => {
       if (!u.isBFSMarked) {
-        v.isBFSMarked = true;
+        u.parent = v;
         u.div.classList.add("bfsMarked");
         u.div.classList.remove("dfsMarked");
         queue.push(u);
@@ -238,7 +247,17 @@ async function BFS(vertex) {
   }
 }
 
-function found();
+async function found(v, alg){
+  let color = "";
+  alg === DFS_ALG ? color = "rgba(255, 104, 54, 0.75)" : color = "rgba(224, 170, 255, 0.75)";
+
+  let path = v;
+  while(path){
+    path.div.style.backgroundColor = color;
+    path = path.parent;
+    await sleep(findingDelay);
+  }
+}
 
 function mazeReset(viewPort) {
   let view = document.querySelector('.' + viewPort);
