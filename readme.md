@@ -17,5 +17,6 @@ In this module the user can generate a maze, which is implemented as a graph wit
 ## Contact
 If you would like to get in touch with me or comment on anything I've presented in my site, please fill free to send me a Message via the one of these links. Thanks!
 
+Gmail: guydav12@gmail.com  
+or
 [linkedin](https://www.linkedin.com/in/guy-davidson/)
-[Gmail](guydav12@gmail.com)
