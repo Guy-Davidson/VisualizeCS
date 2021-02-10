@@ -5,9 +5,9 @@ const MIN_ARRAY_SIZE = 25;
 const MAX_ARRAY_SIZE = 125;
 
 const MIN_SORTING_SPEED = 5;
-const MAX_SORTING_SPEED = 45;
+const MAX_SORTING_SPEED = 40;
 
-const MIN_SORTING_DELAY = 5;
+const MIN_SORTING_DELAY = 10;
 const MAX_SORTING_DELAY = 50;
 
 const BUBBLE = 1;

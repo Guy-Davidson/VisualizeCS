@@ -2,8 +2,8 @@
 
 //Constants:
 const MIN_MAZE_SIZE = 50;
-const MID_MAZE_SIZE = 75;
-const MAX_MAZE_SIZE = 100;
+const MID_MAZE_SIZE = 60;
+const MAX_MAZE_SIZE = 70;
 
 const MIN_FINDING_DELAY = 2;
 const MAX_FINDING_DELAY = 5;
@@ -68,6 +68,7 @@ async function mazeRace(viewPort) {
 
   //Set all clicks to start a race:
   document.getElementById('mazeResetBtn').click();
+  document.getElementById('fastSpeedBtn').click();
   generateMaze(viewPort);
   document.getElementById('dfsBtn').click();
   document.getElementById('findPathBtn').click();
@@ -133,7 +134,7 @@ function generateFinishPoint(size) {
   let r = Math.floor((Math.random() * (size ** 2)) + 1);
   vertices[r].isFinish = true;
   let div = vertices[r].div
-  div.style.backgroundColor = "yellow";
+  div.style.backgroundImage = "linear-gradient(200deg, #fff75e, #ff8800)";
 }
 
 function generateMazeGrid(size, viewPort) {
@@ -236,6 +237,8 @@ async function BFS(vertex) {
     await sleep(findingDelay);
   }
 }
+
+function found();
 
 function mazeReset(viewPort) {
   let view = document.querySelector('.' + viewPort);
