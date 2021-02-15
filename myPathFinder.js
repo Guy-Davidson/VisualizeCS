@@ -49,7 +49,7 @@ class Vertex {
 
 //Dynamicly Set highet to modules:
 window.addEventListener('load', (event) => {
-  let h = window.innerHeight * 0.80;
+  let h = window.innerHeight * 0.82;  
   document.querySelector(".maze").style.height = h + "px";
   document.querySelector(".sort").style.height = h + "px";
 })
