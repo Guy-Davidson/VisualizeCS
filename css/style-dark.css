@@ -173,7 +173,7 @@ a:hover {
 }
 
 .sortTypeButtonsOne, .actionButtonsOne {
-  background-color: #13B9DB;
+  background-color: #2C306E;
   display: inline-block;
 }
 
@@ -276,7 +276,7 @@ input.mazeSizeButtonsOne[type=range] {
   margin-top: 15px;
   margin-bottom: 35px;
   margin-bottom: 0;
-  background-color: #13B9DB;
+  background-color: #2C306E;
   border-color: #FFE3BC;
   border-radius: 10px;
   font-family: 'Fraunces', serif;
@@ -389,7 +389,7 @@ footer {
 
 /* Dynamic Styling */
 .selectedButton {
-  background-color: #F0883E
+  background-color: #0466c8
 }
 
 .border {
@@ -412,6 +412,16 @@ footer {
   background-color: rgba(218, 54, 51, 0.75)
 }
 
+.dfsBtnMark{
+  border-color: rgba(218, 54, 51);
+  border-width: medium;
+}
+
 .bfsMarked {
   background-color: rgba(110, 64, 201, 0.75)
+}
+
+.bfsBtnMark{
+  border-color: rgba(110, 64, 201);
+  border-width: medium;
 }

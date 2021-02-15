@@ -214,8 +214,6 @@ function setRaceSelected(_this) {
 // Array Size Selector:
 
 function updatearraySizeSliderPick(size, viewPort) {
-  // update selected value to slider view button:
-  document.getElementById('arraySizeSliderPick').value = size;
 
   //selcet view port and create 'size' bars:
   let view = document.querySelector('.' + viewPort);

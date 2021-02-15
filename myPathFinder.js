@@ -47,6 +47,13 @@ class Vertex {
   }
 }
 
+//Dynamicly Set highet to modules:
+window.addEventListener('load', (event) => {
+  let h = window.innerHeight * 0.80;
+  document.querySelector(".maze").style.height = h + "px";
+  document.querySelector(".sort").style.height = h + "px";
+})
+
 async function mazeRace(viewPort) {
   mazeRaceSelected(document.getElementById('mazeRaceBtn'))
   document.getElementById('mazeResetBtn').click();
@@ -129,13 +136,15 @@ function generateMaze(viewPort) {
       vertices[cell2].adjList.push(vertices[cell1]);
     }
   }
-  generateFinishPoint(size);
+
+  let r = Math.floor((Math.random() * (size ** 2)) + 1);
+  let v = vertices[r];
+  generateFinishPoint(v);
 }
 
-function generateFinishPoint(size) {
-  let r = Math.floor((Math.random() * (size ** 2)) + 1);
-  vertices[r].isFinish = true;
-  let div = vertices[r].div
+function generateFinishPoint(v) {
+  v.isFinish = true;
+  let div = v.div
   div.style.backgroundImage = "linear-gradient(200deg, #fff75e, #ff8800)";
 }
 
@@ -260,7 +269,7 @@ async function foundBFS(v){
 }
 
 async function foundDFS(v){
-  let color = "rgba(255, 104, 54, 0.75)";
+  let color = "rgba(223, 115, 115, 0.75)";
   let path = v;
 
   while(path){
@@ -283,9 +292,11 @@ function mazeReset(viewPort) {
 }
 
 function dfsSelected(_this) {
-  _this.classList.toggle("selectedButton");
+  _this.classList.add("selectedButton");
+  _this.classList.remove("dfsMarked");
 
   let b1 = document.getElementById("bfsBtn");
+  b1.classList.add("bfsMarked");
   if (b1.classList.contains("selectedButton")) {
     b1.classList.remove("selectedButton");
   }
@@ -299,9 +310,11 @@ function dfsSelected(_this) {
 }
 
 function bfsSelected(_this) {
-  _this.classList.toggle("selectedButton");
+  _this.classList.add("selectedButton");
+  _this.classList.remove("bfsMarked");
 
   let b1 = document.getElementById("dfsBtn");
+  b1.classList.add("dfsMarked");
   if (b1.classList.contains("selectedButton")) {
     b1.classList.remove("selectedButton");
   }
@@ -327,8 +340,6 @@ function mazeRaceSelected(_this) {
     b2.classList.remove("selectedButton");
   }
 
-  sortingAlg = QUICK;
-  selectedBtn = QUICK;
 }
 
 function smallMazeSelected(_this) {

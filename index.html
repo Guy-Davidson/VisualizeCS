@@ -73,7 +73,6 @@
             <p class="arraySizeButtonsOne" style="margin-top:18px">125</p>
           </div>
           <div class="arraySizeButtonsPick">
-            <input type="text" class="arraySizeButtonsTwo" id="arraySizeSliderPick" value="">
           </div>
         </div>
 
@@ -108,8 +107,8 @@
             <input id="mazeRaceBtn" class="actionButtonsOne selectedButton" type="button" name="race" value="Set Race" onclick="mazeRace('mazeView')">
             <p id="chooseSA">Or choose Path Finding Algorithm:</p><br>
             <div class="pathTypeButtons">
-              <input id="dfsBtn" class="pathTypeButtonsOne" type="button" value="DFS" onclick="dfsSelected(this);"> <br>
-              <input id="bfsBtn" class="pathTypeButtonsOne" type="button" value="BFS" onclick="bfsSelected(this);">
+              <input id="dfsBtn" class="pathTypeButtonsOne dfsBtnMark dfsMarked" type="button" value="DFS" onclick="dfsSelected(this);"> <br>
+              <input id="bfsBtn" class="pathTypeButtonsOne bfsBtnMark bfsMarked" type="button" value="BFS" onclick="bfsSelected(this);">
             </div>
           </div>
 
