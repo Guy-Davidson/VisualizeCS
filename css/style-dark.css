@@ -139,7 +139,6 @@ a:hover {
   grid-template-columns: 80% 20%;
   width: 95%;
   margin: auto;
-  /* height: 35%; */
 }
 
 .view, .sortType, .arraySize, .sortingSpeed, .action {
@@ -273,15 +272,20 @@ input.mazeSizeButtonsOne[type=range] {
 }
 
 .pathTypeButtonsOne, .mazeActionButtonsOne, .settingsButtons {
-  margin-top: 15px;
-  margin-bottom: 35px;
-  margin-bottom: 0;
   background-color: #2C306E;
   border-color: #FFE3BC;
   border-radius: 10px;
   font-family: 'Fraunces', serif;
   font-size: 1.01rem;
   color: #E6FEFE;
+}
+
+.mazeActionButtonsOne, .settingsButtons {
+  margin-top: 15px;
+}
+
+.pathTypeButtonsOne {
+  margin-top: 5px;
 }
 
 /* Contact Form */
