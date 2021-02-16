@@ -283,8 +283,6 @@ function updateSortingSpeedSliderPick(speed) {
 //Sort & Reset:
 function reset() {
 
-  document.getElementById('arraySizeSliderPick').value = 0;
-
   let view = document.querySelector('.view');
   view.innerHTML = "";
 
