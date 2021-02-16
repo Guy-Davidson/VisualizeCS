@@ -224,7 +224,7 @@ async function DFS(vertex) {
       v.div.classList.add("dfsMarked");
       v.div.classList.remove("bfsMarked");
       v.adjList.forEach(u => {
-        if(!u.isDFSMarked){
+        if (!u.isDFSMarked) {
           u.dfsParent = v;
           stack.push(u);
         }
@@ -257,22 +257,22 @@ async function BFS(vertex) {
   }
 }
 
-async function foundBFS(v){
+async function foundBFS(v) {
   let color = "rgba(224, 170, 255, 0.75)";
   let path = v;
 
-  while(path){
+  while (path) {
     path.div.style.backgroundColor = color;
     path = path.bfsParent;
     await sleep(findingDelay);
   }
 }
 
-async function foundDFS(v){
+async function foundDFS(v) {
   let color = "rgba(223, 115, 115, 0.75)";
   let path = v;
 
-  while(path){
+  while (path) {
     path.div.style.backgroundColor = color;
     path = path.dfsParent;
     await sleep(findingDelay);

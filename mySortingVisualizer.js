@@ -408,7 +408,16 @@ async function quickSort(l, h, viewPort) {
     l = stack[top--];
 
     //partiotion(l, h viewPort):
-    let x = parseInt(view.querySelectorAll("div")[h].firstChild.textContent);
+
+    //highlight pivot:
+    let pivotDiv = view.querySelectorAll("div")[h];
+    let pivotBG = pivotDiv.style.backgroundColor;
+    let pivotBC = pivotDiv.style.borderColor;
+    pivotDiv.style.backgroundColor = "#ff8800";
+    pivotDiv.style.borderColor = "#fff75e";
+
+
+    let x = parseInt(pivotDiv.firstChild.textContent);
     let i = (l - 1);
     for (let j = l; j <= h - 1; j++) {
       if (parseInt(view.querySelectorAll("div")[j].firstChild.textContent) <= x) {
@@ -425,6 +434,10 @@ async function quickSort(l, h, viewPort) {
       view.insertBefore(view.querySelectorAll("div")[h], view.querySelectorAll("div")[0]);
     }
     await sleep(sortingDelay);
+
+    //unhighlight pivot:
+    pivotDiv.style.backgroundColor = pivotBG + "";
+    pivotDiv.style.borderColor = pivotBC + "";
 
 
     let p = i + 1;
