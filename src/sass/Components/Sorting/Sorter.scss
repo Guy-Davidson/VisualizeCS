@@ -1,6 +1,17 @@
 @import '../../main.scss';
 
 .Sorter {
-    background-color: lightcoral;
+    margin: 1rem;        
+    display: grid;
+    grid-template-columns: 1fr 8fr;       
+    height: 100%;
+
+    .SideBar {
+        font-size: 4rem;
+    }
+
+    .Port {
+        display: flex;            
+    }
 }
 

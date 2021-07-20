@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { useQuery } from '../../Hooks/UseQuery.jsx'
+import { Link, useLocation } from 'react-router-dom'
 import '../../sass/Components/TopBarItem.scss'
 
 const TopBarItem = (props) => {
-    const { item } = props;   
-    let query = useQuery().get("mode")
+    const { item } = props;       
     const [isActive, setIsActive] = useState(false)
+    let url = useLocation();
 
-    useEffect( () => {
-        item.key === query ? setIsActive(true) : setIsActive(false)
-    }, [query])
+    useEffect( () => {        
+        `/${item.key}` === url.pathname ? setIsActive(true) : setIsActive(false)
+        
+    }, [url, item.key])
 
     return (        
         <Link 
           className={isActive ? 'TopBarItem Active' : 'TopBarItem'}
           to={{
-            pathname: `/`,
-            search: `?mode=${item.link}`
+            pathname: `/${item.link}`,            
                 }}>       
             <div className='icon'>
                 {item.icon}

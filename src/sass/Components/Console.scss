@@ -8,4 +8,9 @@
     border-width: 1px;
     border-radius: 5px;
     border-color: $gray-5;
+     
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
 }
