@@ -1,0 +1,33 @@
+@import '../main.scss';
+
+.TopBarItem {    
+    margin: 1rem;
+    margin-bottom: 0;
+    display: flex;
+    padding: 0 3px;    
+
+    &:hover {
+        cursor: pointer;
+
+        border-bottom: solid;
+        border-bottom-color: $gray-3;
+        border-bottom-width: 2px;    
+        color: $gray-1;    
+    }
+    
+    .icon {
+        vertical-align: baseline;
+        margin-right: 0.5rem;        
+    }
+}
+
+.Active {    
+    border-bottom: solid;    
+    border-bottom-width: 2px;   
+    border-bottom-color: $highlight-1;
+    color: $gray-1 !important;    
+
+    &:hover {
+        border-bottom-color: $highlight-1;
+    }
+}

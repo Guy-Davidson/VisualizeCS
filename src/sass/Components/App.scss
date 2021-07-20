@@ -1,0 +1,30 @@
+@import '../main.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;    
+}
+
+body {    
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial;    
+    box-sizing: border-box;
+}
+
+#statuspanel {
+    display: none !important;
+}
+
+.App {
+    background-color: $bg-dark-1;
+    color: $gray-3;
+    height: 100vh;
+    width: 100wh;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}

@@ -1,0 +1,13 @@
+@import '../main.scss';
+
+.TopBar {
+    font-size: 3rem;
+    display: flex;
+    justify-content: flex-start;    
+
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
