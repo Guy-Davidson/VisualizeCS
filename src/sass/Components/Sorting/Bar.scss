@@ -2,10 +2,9 @@
 
 .Bar {        
     display: flex;
-    flex-direction: column;
-    justify-content: end;        
+    flex-direction: column;        
     border: solid;
-    border-color: $bg-dark-1;
-    border-width: 2px;
+    border-color: $blue-1;
+    border-width: 1px;
     border-radius: 5px 5px 0px 0px; 
 }

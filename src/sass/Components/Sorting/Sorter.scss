@@ -1,17 +1,50 @@
 @import '../../main.scss';
 
 .Sorter {
-    margin: 1rem;        
+    margin: 1rem;    
+    margin-top: 2rem;    
     display: grid;
     grid-template-columns: 1fr 8fr;       
     height: 100%;
 
     .SideBar {
-        font-size: 4rem;
+        font-size: 2rem;
+        display: flex;        
+        flex-direction: column;    
+        justify-content: space-between;
+        
+        .AlgoWrapper {
+            display: flex;
+            flex-direction: column;    
+        }
+
+        .SortingButton {            
+            margin: 1rem;
+            padding: 4px;
+            border-radius: 10px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: $highlight-light;
+            background-color: $purple-1;                        
+            color: $fc-light-1;            
+            width: 60%;
+            min-width: fit-content;
+            display: flex;
+            justify-content: center;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .ActiveSorter {
+            background-color: $highlight-blue; 
+        }
     }
 
     .Port {
-        display: flex;            
+        display: flex;    
+        align-items: baseline;        
     }
 }
 
