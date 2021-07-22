@@ -8,8 +8,8 @@ const Bar = (props) => {
 
     return (
         <div className='Bar' 
-            style={{
-                backgroundColor: isHighlighted ? '#ffdd00' : arrayBarColor(barVal),                
+            style={{                               
+                backgroundColor: isHighlighted ? '#ffdd00' : arrayBarColor(barVal), 
                 width: `100%`,
                 height: `${barVal}%`
                 }}>            

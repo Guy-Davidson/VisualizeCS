@@ -35,16 +35,16 @@ const Sorter = () => {
             if (i !== r) {
                 currentBars.push(
                     <Bar 
-                        barVal={Math.floor(Math.random() * 99) + 1}
-                        isHighlighted={false}                    
-                        key={i}/>
+                        barVal={Math.floor(Math.random() * 99) + 1}                                    
+                        key={i}
+                        isHighlighted={false}/>
                 )
             } else {
                 currentBars.push(
                     <Bar 
-                        barVal={100}
-                        isHighlighted={false}                    
-                        key={100}/>
+                        barVal={100}                                         
+                        key={100}
+                        isHighlighted={false}/>
                 )
             }
         }
@@ -122,9 +122,74 @@ const Sorter = () => {
     }
 
     const quickSort = async () => {
-        setIsSorting(true)          
+        setIsSorting(true) 
+        
+        let sortingBars = [...bars]
 
-    }
+        let stack = []
+        stack.push(0)
+        stack.push(bars.length - 1)
+
+        while (stack.length) {
+
+            let end = stack.pop()
+            let start = stack.pop()             
+
+            let pivotVal = sortingBars[end].props.barVal  
+            let pivotKey = sortingBars[end].props.key
+
+            let highlightedBar = <Bar 
+                                    barVal={pivotVal}
+                                    key={pivotKey}
+                                    isHighlighted={true}/>
+
+            sortingBars.splice(end , 1, highlightedBar)
+            let stateBars = [...sortingBars]
+            setBars(stateBars)
+
+            let pivotIndex = start; 
+            for (let i = start; i < end; i++) {
+                if (sortingBars[i].props.barVal < pivotVal) {                                                
+                let temp = sortingBars[i]
+                sortingBars[i] = sortingBars[pivotIndex]
+                sortingBars[pivotIndex] = temp
+                pivotIndex++;
+
+                let stateBars = [...sortingBars]
+                setBars(stateBars)
+                await sleep(BASE_SPEED + speed) 
+                }
+            }
+            
+            let temp = sortingBars[end]
+            sortingBars[end] = sortingBars[pivotIndex]
+            sortingBars[pivotIndex] = temp  
+
+            let unHighlightedBar = <Bar 
+                                        barVal={pivotVal}
+                                        key={pivotKey}
+                                        isHighlighted={false}/>
+
+            sortingBars.splice(pivotIndex , 1, unHighlightedBar) 
+            
+            stateBars = [...sortingBars]
+            setBars(stateBars)
+            await sleep(BASE_SPEED + speed) 
+  
+            if (pivotIndex - 1 > start) {                
+                stack.push(start)
+                stack.push(pivotIndex - 1)
+            }
+        
+            if (pivotIndex + 1 < end) {                
+                stack.push(pivotIndex + 1)
+                stack.push(end) 
+            }
+        }
+
+        setBars(sortingBars)
+        setIsSorting(false) 
+    }    
 
     const sort = () => {        
         if (sortingAlgo === BUBBLE) {
@@ -204,3 +269,5 @@ const Sorter = () => {
 }
 
 export default Sorter
+
+
