@@ -15,6 +15,11 @@ body {
     box-sizing: border-box;
 }
 
+a, a:hover, a:visited, a:active, a:focus {
+    text-decoration: none;
+    color: inherit;
+}
+
 #statuspanel {
     display: none !important;
 }

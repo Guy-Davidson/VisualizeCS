@@ -14,6 +14,7 @@ const TopBarItem = (props) => {
 
     return (        
         <Link 
+          style={{ textDecoration: 'none' }}
           className={isActive ? 'TopBarItem Active' : 'TopBarItem'}
           to={{
             pathname: `/${item.link}`,            

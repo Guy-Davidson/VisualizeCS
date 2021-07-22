@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './sass/Components/App.scss'
 
 import Console from './Components/Console'
 
-const App = () => {
+const App = () => {  
   return (
-    <div className='App'>
+    <div className='App'>   
       <Console />
     </div>
   )

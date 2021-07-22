@@ -12,21 +12,31 @@
         display: flex;        
         flex-direction: column;    
         justify-content: space-between;
+
         
         .AlgoWrapper {
             display: flex;
             flex-direction: column;    
+
+            .ActiveAlgo {  
+                color: $highlight-blue; 
+                transform: scale(1.3);
+              }
+        }
+
+        .SettingsWrapper {
+            display: flex;
+            
+
+            .SliderWrapper {
+                margin: 1rem;
+            }
         }
 
         .SortingButton {            
             margin: 1rem;
-            padding: 4px;
-            border-radius: 10px;
-            border-style: solid;
-            border-width: 1px;
-            border-color: $highlight-light;
-            background-color: $purple-1;                        
-            color: $fc-light-1;            
+            padding: 4px;                    
+            color: $gray-3;            
             width: 60%;
             min-width: fit-content;
             display: flex;
@@ -37,8 +47,29 @@
             }
         }
 
-        .ActiveSorter {
-            background-color: $highlight-blue; 
+        .SortWrapper {
+            display: flex;                                   
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .ActiveSort{
+            color: $highlight-blue; 
+            transform: scale(1.2);           
+        }
+
+        .ActiveArrow {
+            color: $highlight-blue; 
+            animation-name: sortingArrow;
+            animation-duration: 0.4s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        .HiddenArrow {
+            visibility: hidden;
         }
     }
 
@@ -48,3 +79,7 @@
     }
 }
 
+@keyframes sortingArrow {
+    0% { transform: translateX(0); opacity: 0.4 }
+    100% { transform: translateX(1.5rem); opacity: 0.9 }
+  }

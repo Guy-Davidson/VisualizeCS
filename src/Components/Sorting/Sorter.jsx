@@ -1,42 +1,64 @@
 import React, { useEffect, useState } from 'react'
 import '../../sass/Components/Sorting/Sorter.scss'
+import { Slider } from 'rsuite';
+import 'rsuite/dist/styles/rsuite-default.css'
+import { IoSpeedometerOutline } from 'react-icons/io5' 
+import { IoIosArrowForward } from 'react-icons/io';
+import { CgSize } from 'react-icons/cg';
+
 import Bar from './Bar'
 
 const BUBBLE = 1;
 const MERGE = 2;
 const QUICK = 3;
-const RACE = 4;
+
+
+const BASE_SPEED = 1
+const MAX_LENGTH = 100
 
 const Sorter = () => {
-    const [length, setLength] = useState(40)
-    const [speed, setSpeed] = useState(900)
+    const [length, setLength] = useState(MAX_LENGTH) 
+    const [speed, setSpeed] = useState(null)
     const [sortingAlgo, setSortingAlgo] = useState(BUBBLE)
     const [bars, setBars] = useState([])
+    const [isSorting, setIsSorting] = useState(false)
 
     useEffect( () => {
         initBars()
-    }, [])
+    }, [length])
 
     const initBars = () => {
         let currentBars = []
+        let r = Math.floor(Math.random() * length) 
 
-        for (let i = 0 ; i < length; i++) {
-            currentBars.push(
-                <Bar 
-                    barVal={Math.floor(Math.random() * 99) + 1}
-                    isHighlighted={false}                    
-                    key={i}/>
-            )
+        for (let i = 0 ; i < length ; i++) {
+            if (i !== r) {
+                currentBars.push(
+                    <Bar 
+                        barVal={Math.floor(Math.random() * 99) + 1}
+                        isHighlighted={false}                    
+                        key={i}/>
+                )
+            } else {
+                currentBars.push(
+                    <Bar 
+                        barVal={100}
+                        isHighlighted={false}                    
+                        key={100}/>
+                )
+            }
         }
 
         setBars(currentBars)
     }
 
-    const sleep = async (ms) =>  {
+    const sleep = (ms) =>  {
         return new Promise(resolve => setTimeout(resolve, ms));
       }
 
     const bubbleSort = async () => {   
+        setIsSorting(true)          
+
         let sorted = false       
         let sortingBars = [...bars]
 
@@ -53,70 +75,127 @@ const Sorter = () => {
 
                     let stateBars = [...sortingBars]
                     setBars(stateBars)
-                    await sleep(10)                                        
+                    await sleep(BASE_SPEED + speed)                                        
                 }
             }            
         }
-        
-      }
+        setIsSorting(false)        
+    }
 
     const mergeSort = async () => {
+        setIsSorting(true) 
+        
+        let sortingBars = [...bars]   
+        let len = bars.length     
+        
+        for (let size = 1 ; size < len ; size *= 2) {
+            for (let leftStart = 0 ; leftStart < len ; leftStart += 2 * size) {
+        
+              let left = leftStart            
+              let right = Math.min(left + size, len)
+              let leftLimit = right
+              let rightLimit = Math.min(right + size, len);
+              let i = left
+              // merge(from, mid, to):                        
+        
+              while (left < leftLimit && right < rightLimit) {
+                  let val1 = sortingBars[left].props.barVal
+                  let val2 = sortingBars[right].props.barVal                
+        
+                  if (val1 <= val2) {                                          
+                      left++;
+                  } else {        
+                      sortingBars.splice(i , 0, sortingBars.splice(right, 1)[0])                    
+                      right++;
+                      left++;
+                      leftLimit++
 
+                      let stateBars = [...sortingBars]
+                      setBars(stateBars)
+                      await sleep(BASE_SPEED + speed) 
+                  }
+                  i++;            
+              }
+            }
+          }
+        setIsSorting(false) 
     }
 
     const quickSort = async () => {
+        setIsSorting(true)          
 
+    }
+
+    const sort = () => {        
+        if (sortingAlgo === BUBBLE) {
+            bubbleSort()
+        } else if (sortingAlgo === MERGE) {
+            mergeSort()
+        } else if (sortingAlgo === QUICK) {
+            quickSort()
+        }
     }
 
     return (
         <div className='Sorter'>
             <div className='SideBar'>
                 <div className='AlgoWrapper'>
-                    <span className={sortingAlgo == BUBBLE ? 'ActiveSorter SortingButton' : 'SortingButton'}
-                        onClick={bubbleSort}>
+                    <span className={sortingAlgo === BUBBLE ? 'ActiveAlgo SortingButton' : 'SortingButton'}
+                        onClick={() => setSortingAlgo(BUBBLE)}>
                         Bubble
                     </span>
-                    <span className={sortingAlgo == MERGE ? 'ActiveSorter SortingButton' : 'SortingButton'}
-                        onClick={mergeSort}>
+                    <span className={sortingAlgo === MERGE ? 'ActiveAlgo SortingButton' : 'SortingButton'}
+                        onClick={() => setSortingAlgo(MERGE)}>
                         Merge
                     </span>
-                    <span className={sortingAlgo == QUICK ? 'ActiveSorter SortingButton' : 'SortingButton'}
-                        onClick={quickSort}>
+                    <span className={sortingAlgo === QUICK ? 'ActiveAlgo SortingButton' : 'SortingButton'}
+                        onClick={() => setSortingAlgo(QUICK)}>
                         Quick
                     </span>
                 </div>
 
-                <div className='AlgoWrapper'>
-                    <span className={sortingAlgo == BUBBLE ? 'ActiveSorter SortingButton' : 'SortingButton'}
-                        onClick={bubbleSort}>
-                        Bubble
-                    </span>
-                    <span className={sortingAlgo == MERGE ? 'ActiveSorter SortingButton' : 'SortingButton'}
-                        onClick={mergeSort}>
-                        Merge
-                    </span>
-                    <span className={sortingAlgo == QUICK ? 'ActiveSorter SortingButton' : 'SortingButton'}
-                        onClick={quickSort}>
-                        Quick
-                    </span>
+                <div className='SettingsWrapper'>
+                    <div className='SliderWrapper'>
+                            <Slider     
+                                onChange={(newSpeed) => setSpeed(newSpeed) }
+                                style={{ 
+                                    height: '20rem',
+                                    width: '1rem', 
+                                    margin: `1rem`                                                               
+                                }}
+                                min={1}
+                                max={9}
+                                defaultValue={5} 
+                                disabled={isSorting}
+                                vertical/>
+                            <IoSpeedometerOutline size={`3rem`}/>
+                        </div>
+
+                        <div className='SliderWrapper'>
+                            <Slider     
+                                onChange={(newLength) => setLength(MAX_LENGTH - newLength) }
+                                style={{ 
+                                    height: '20rem',
+                                    width: '1rem', 
+                                    margin: `1rem`                                                               
+                                }}                                
+                                min={0}
+                                max={80}
+                                defaultValue={40} 
+                                disabled={isSorting}
+                                vertical/>
+                            <CgSize size={`3rem`}/>
+                        </div>
                 </div>
 
-                <div className='AlgoWrapper'>
-                    <span className={sortingAlgo == BUBBLE ? 'ActiveSorter SortingButton' : 'SortingButton'}
-                        onClick={bubbleSort}>
-                        Bubble
-                    </span>
-                    <span className={sortingAlgo == MERGE ? 'ActiveSorter SortingButton' : 'SortingButton'}
-                        onClick={mergeSort}>
-                        Merge
-                    </span>
-                    <span className={sortingAlgo == QUICK ? 'ActiveSorter SortingButton' : 'SortingButton'}
-                        onClick={quickSort}>
-                        Quick
-                    </span>
+                <div className='SortWrapper' onClick={sort}>
+                    <span className={isSorting ? 'ActiveSort' : ''}>
+                        {isSorting ? 'Sorting' : 'Sort'}</span>
+                    <IoIosArrowForward 
+                        className={isSorting ? 'ActiveArrow' : ''}
+                        size={`3rem`} />
                 </div>
             </div>
-
             <div className='Port'>
                 {bars}                
             </div>
