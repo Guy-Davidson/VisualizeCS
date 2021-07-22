@@ -3,7 +3,8 @@ import '../../sass/Components/Sorting/Sorter.scss'
 import { Slider } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css'
 import { IoSpeedometerOutline } from 'react-icons/io5' 
-import { IoIosArrowForward } from 'react-icons/io';
+import { IoIosArrowForward } from 'react-icons/io'; 
+import { VscDebugRestart } from 'react-icons/vsc'; 
 import { CgSize } from 'react-icons/cg';
 
 import Bar from './Bar'
@@ -22,6 +23,7 @@ const Sorter = () => {
     const [sortingAlgo, setSortingAlgo] = useState(BUBBLE)
     const [bars, setBars] = useState([])
     const [isSorting, setIsSorting] = useState(false)
+    const [isSorted, setIsSorted] = useState(false) 
 
     useEffect( () => {
         initBars()
@@ -50,6 +52,7 @@ const Sorter = () => {
         }
 
         setBars(currentBars)
+        setIsSorted(false)
     }
 
     const sleep = (ms) =>  {
@@ -79,7 +82,8 @@ const Sorter = () => {
                 }
             }            
         }
-        setIsSorting(false)        
+        setIsSorting(false)     
+        setIsSorted(true)   
     }
 
     const mergeSort = async () => {
@@ -119,6 +123,7 @@ const Sorter = () => {
             }
           }
         setIsSorting(false) 
+        setIsSorted(true)   
     }
 
     const quickSort = async () => {
@@ -186,9 +191,9 @@ const Sorter = () => {
                 stack.push(end) 
             }
         }
-
-        setBars(sortingBars)
+        
         setIsSorting(false) 
+        setIsSorted(true)   
     }    
 
     const sort = () => {        
@@ -238,7 +243,10 @@ const Sorter = () => {
 
                         <div className='SliderWrapper'>
                             <Slider     
-                                onChange={(newLength) => setLength(MAX_LENGTH - newLength) }
+                                onChange={(newLength) => {
+                                    setLength(MAX_LENGTH - newLength)
+                                    setIsSorted(false)
+                                }}
                                 style={{ 
                                     height: '20rem',
                                     width: '1rem', 
@@ -253,13 +261,27 @@ const Sorter = () => {
                         </div>
                 </div>
 
-                <div className='SortWrapper' onClick={sort}>
-                    <span className={isSorting ? 'ActiveSort' : ''}>
-                        {isSorting ? 'Sorting' : 'Sort'}</span>
-                    <IoIosArrowForward 
-                        className={isSorting ? 'ActiveArrow' : ''}
-                        size={`3rem`} />
-                </div>
+                {isSorted ?
+
+                    <div className='SortWrapper' onClick={initBars}>
+                        <span className={''}>
+                            {'Generate'}</span>
+                        <VscDebugRestart 
+                            className={''}
+                            size={`2.8rem`} />
+                    </div>
+
+                    : 
+
+                    <div className='SortWrapper' onClick={sort}>
+                        <span className={isSorting ? 'ActiveSort' : ''}>
+                            {isSorting ? 'Sorting' : 'Sort'}</span>
+                        <IoIosArrowForward 
+                            className={isSorting ? 'ActiveArrow' : ''}
+                            size={`3rem`} />
+                    </div>
+
+                }
             </div>
             <div className='Port'>
                 {bars}                
