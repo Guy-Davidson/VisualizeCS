@@ -22,12 +22,18 @@ const Cell = (props) => {
         if (props.isFinishPoint) {            
             currentClasses.push('Finish')
         }
+        if (props.isDFSMarked) {            
+            currentClasses.push('dfsMarked')
+        }
+        if (props.dfsPath) {            
+            currentClasses.push('dfsPath')
+        }
+
         setClasses(currentClasses)    
-    }, [])
+    }, [props.isDFSMarked, props.dfsPath, props.dfsParent])
 
     return (
-        <div className={classes && classes.join(' ')}>
-            
+        <div className={classes && classes.join(' ')}>            
         </div>
     )
 }

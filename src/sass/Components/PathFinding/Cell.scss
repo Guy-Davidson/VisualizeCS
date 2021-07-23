@@ -3,7 +3,8 @@
 .Cell {
     border-style: solid;
     border-color: $highlight-blue;
-    border-width: 1px;    
+    border-width: 1px;      
+    color: white;      
 }
 
 .Up {
@@ -24,4 +25,29 @@
 
 .Finish {
     background-color: $highlight-gold;
+    background-color: linear-gradient(200deg, #fff75e, #ff8800)
 }
+
+.dfsMarked {    
+    animation-name: fadeInDFSMark;
+    animation-duration: 0.15s;    
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in; 
+}
+
+.dfsPath {
+    animation-name: fadeInDFSPath;
+    animation-duration: 0.15s;    
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+}
+
+@keyframes fadeInDFSMark {
+    0% { background-color: inherit }
+    100% { background-color: rgba(218, 54, 51, 0.85);}
+  }
+
+@keyframes fadeInDFSPath {
+    0% { background-color: $highlight-gold; }
+    100% { background-color: rgba(223, 115, 115, 0.75);} 
+  }

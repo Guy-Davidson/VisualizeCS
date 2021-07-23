@@ -8,28 +8,31 @@ import { VscDebugRestart } from 'react-icons/vsc';
 import { CgSize } from 'react-icons/cg';
 import Cell from './Cell'
 
-const DFS = 1
-const BFS = 2
+const DFS_ALGO = 1
+const BFS_ALGO = 2
 
 const BASE_SPEED = 1
-const MAX_LENGTH = 50
+const MAX_LENGTH = 30
+
 
 const Finder = () => {
-    const [findingAlgo, setFindingAlgo] = useState(DFS)
-    const [length, setLength] = useState(MAX_LENGTH) 
+    const [findingAlgo, setFindingAlgo] = useState(DFS_ALGO)
+    const [length, setLength] = useState(MAX_LENGTH)     
     const [speed, setSpeed] = useState(null)    
     const [maze, setMaze] = useState(null)
     const [isFinding, setIsFinding] = useState(false)
     const [found, setFound] = useState(false) 
-    const [cells, setCells] = useState([])
-    const [components, setComponents] = useState([])
+    
 
     useEffect( () => {
         initMaze()
     }, [length])
 
-    const initMaze = () => {
+
+    const initMaze = () => {        
+
         let currentMaze = []
+        
 
         let k = 1
         for (let i = 0 ; i < length ; i++) {            
@@ -37,11 +40,12 @@ const Finder = () => {
                 currentMaze.push (
                     <Cell 
                         key={k}
+                        name={k}
                         up={true}
                         down={true}
                         right={true}
                         left={true}    
-                        isFinishPoint={false}   
+                        isFinishPoint={false}                         
                         adjList={[]}                     
                         />                        
                 )
@@ -55,9 +59,7 @@ const Finder = () => {
 
         let components = Array.from({
             length: length ** 2
-          }, (_, index) => index + 1); 
-             
-
+          }, (_, index) => index + 1);         
           
         while (!components.every(v => v === components[0])) {        
 
@@ -66,7 +68,6 @@ const Finder = () => {
             let randCol = Math.floor((Math.random() * length) + 1);
             let randRow = Math.floor((Math.random() * length));
             let r1 = randCol + randRow * length;
-            let randomFinish = Math.floor((Math.random() * (length ** 2)) + 1)
 
             let r = Math.random()
             let r2 = -1
@@ -99,21 +100,25 @@ const Finder = () => {
                     
                     let newCell1 = <Cell 
                                         key={cell1}
+                                        name={currentMaze[cell1Idx].props.name}
                                         adjList={currentMaze[cell1Idx].props.adjList.concat([cell2])}
                                         up={currentMaze[cell1Idx].props.up}
                                         down={currentMaze[cell1Idx].props.down}
                                         right={false}
                                         left={currentMaze[cell1Idx].props.left}    
-                                        isFinishPoint={randomFinish === cell1}/>
+                                        isFinishPoint={false}
+                                        />
 
                     let newCell2 = <Cell 
                                         key={cell2}
+                                        name={currentMaze[cell2Idx].props.name}
                                         adjList={currentMaze[cell2Idx].props.adjList.concat([cell1])}
                                         up={currentMaze[cell2Idx].props.up}
                                         down={currentMaze[cell2Idx].props.down}
                                         right={currentMaze[cell2Idx].props.right}
                                         left={false}    
-                                        isFinishPoint={randomFinish === cell2}/>
+                                        isFinishPoint={false}
+                                        />
 
                     currentMaze.splice(cell1Idx, 1, newCell1)    
                     currentMaze.splice(cell2Idx, 1, newCell2)   
@@ -123,21 +128,25 @@ const Finder = () => {
 
                     let newCell1 = <Cell 
                                         key={cell1}
+                                        name={currentMaze[cell1Idx].props.name}
                                         adjList={currentMaze[cell1Idx].props.adjList.concat([cell2])}
                                         up={currentMaze[cell1Idx].props.up}
                                         down={false}
                                         right={currentMaze[cell1Idx].props.right}
                                         left={currentMaze[cell1Idx].props.left}    
-                                        isFinishPoint={randomFinish === cell1}/>
+                                        isFinishPoint={false}
+                                        />
 
                     let newCell2 = <Cell 
                                         key={cell2}
+                                        name={currentMaze[cell2Idx].props.name}
                                         adjList={currentMaze[cell2Idx].props.adjList.concat([cell1])}
                                         up={false}
                                         down={currentMaze[cell2Idx].props.down}
                                         right={currentMaze[cell2Idx].props.right}
                                         left={currentMaze[cell2Idx].props.left}    
-                                        isFinishPoint={randomFinish === cell2}/>
+                                        isFinishPoint={false}
+                                        />
 
                     currentMaze.splice(cell1Idx, 1, newCell1)    
                     currentMaze.splice(cell2Idx, 1, newCell2)
@@ -145,88 +154,231 @@ const Finder = () => {
               }
         }
 
+        let randomFinish = Math.floor((Math.random() * (length ** 2)) ) 
+        let randomFinishIdx = randomFinish - 1        
+        
+        let newFinishCell = <Cell 
+                key={randomFinish}                
+                adjList={currentMaze[randomFinishIdx].props.adjList}
+                up={currentMaze[randomFinishIdx].props.up}
+                down={currentMaze[randomFinishIdx].props.down}
+                right={currentMaze[randomFinishIdx].props.right}
+                left={currentMaze[randomFinishIdx].props.left}                   
+                isFinishPoint={true}/>
+
+        currentMaze.splice(randomFinishIdx, 1, newFinishCell) 
+
         setMaze(currentMaze)
+        setFound(false)
     }
 
-    const generateGrid = () => {
-        let currentMaze = []
-
-        let k = 1
-        for (let i = 0 ; i < length ; i++) {            
-            for (let j = 0 ; j < length ; j++) {
-                currentMaze.push (
-                    <Cell 
-                        key={k}
-                        up={true}
-                        down={true}
-                        right={true}
-                        left={true}    
-                        isFinishPoint={false}   
-                        adjList={[]}                     
-                        />                        
-                )
-                k++
-            }            
-        }        
-        setMaze(currentMaze)
-    }
-
-    const initUnionFind = () => {
-        let currentCells = []
-
-        currentCells = Array.from({
-          length: length ** 2
-        }, (_, index) => index + 1);
-
-        setCells(currentCells)
-
-        let currentComponents = []
-
-        currentComponents = Array.from({
-          length: length ** 2
-        }, (_, index) => index + 1);
-
-        setComponents(currentComponents)        
+    const sleep = (ms) =>  {
+        return new Promise(resolve => setTimeout(resolve, ms));
       }
 
-    const isSingleComponents = () => {        
-        return components.every(v => v === components[0]);
-      }
+    const find = async (vertex) => {
+        setIsFinding(true)
+        let findingMaze = [...maze]
+        let stack = [];        
+        stack.push(vertex);
 
-    const find = (cell) => {
-        return components[cell - 1];
-      }
+        while (stack.length) {
+          let v = stack.pop();
+          let vIdx = v - 1
 
-    const union = (cell1, cell2) => {
-        let newComponents = [...components]  
+            if (findingMaze[vIdx].props.isFinishPoint) {                
 
-        let leader = find(cell1);
-        let sec = find(cell2);
+                let path = v;
       
-        for (let i = 0; i < newComponents.length; i++) {
-          if (newComponents[i] == sec) {
-            newComponents[i] = leader;
-          }
-        }
+                while (path) {
+                    
+        
+                    let pathIdx = path - 1
+                    let next = findingMaze[pathIdx].props.dfsParent
 
-        setComponents(newComponents)
-      }
+                    let pathCell = <Cell                                     
+                                            key={path}                                                            
+                                            adjList={findingMaze[pathIdx].props.adjList}
+                                            up={findingMaze[pathIdx].props.up}
+                                            down={findingMaze[pathIdx].props.down}
+                                            right={findingMaze[pathIdx].props.right}
+                                            left={findingMaze[pathIdx].props.left}    
+                                            isFinishPoint={findingMaze[pathIdx].props.isFinishPoint} 
+                                            dfsParent={findingMaze[pathIdx].props.dfsParent}                                   
+                                            dfsPath={true}
+                                            />
+        
+                    findingMaze.splice(pathIdx, 1, pathCell)
+                    let stateMaze = [...findingMaze]
+                    setMaze(stateMaze)
+                    await sleep(BASE_SPEED + speed);
+        
+                    path = next
+                }
+                 
+                let stateMaze = [...findingMaze]
+                setMaze(stateMaze) 
+                setIsFinding(false)   
+                setFound(true)                     
+                return;
+            }
+
+            if (!findingMaze[vIdx].props.isDFSMarked) {                
+
+                let markedCell = <Cell                                     
+                                    key={v}                                    
+                                    isDFSMarked={true} 
+                                    adjList={findingMaze[vIdx].props.adjList}
+                                    up={findingMaze[vIdx].props.up}
+                                    down={findingMaze[vIdx].props.down}
+                                    right={findingMaze[vIdx].props.right}
+                                    left={findingMaze[vIdx].props.left}    
+                                    isFinishPoint={findingMaze[vIdx].props.isFinishPoint} 
+                                    dfsParent={findingMaze[vIdx].props.dfsParent}                                   
+                                    />
+
+                findingMaze.splice(vIdx, 1, markedCell)
+                let stateMaze = [...findingMaze]
+                setMaze(stateMaze)
+                await sleep(BASE_SPEED + speed);
+                
+                findingMaze[vIdx].props.adjList.forEach(u => {
+                    let uIdx = u - 1
+                    if (!findingMaze[uIdx].props.isDFSMarked) {
+
+                        let childCell = <Cell                                     
+                        key={u}                                                            
+                        adjList={findingMaze[uIdx].props.adjList}
+                        up={findingMaze[uIdx].props.up}
+                        down={findingMaze[uIdx].props.down}
+                        right={findingMaze[uIdx].props.right}
+                        left={findingMaze[uIdx].props.left}    
+                        isFinishPoint={findingMaze[uIdx].props.isFinishPoint} 
+                        dfsParent={v}                                   
+                        />
+
+                        findingMaze.splice(uIdx, 1, childCell)
+                        let stateMaze = [...findingMaze]
+                        setMaze(stateMaze)
+                        
+
+                        stack.push(u);
+                    }
+                });
+            }
+            
+        }        
+    }
+
+    const BFS = async (vertex) => {
+        setIsFinding(true)
+        let findingMaze = [...maze]
+        let stack = [];        
+        stack.push(vertex);
+
+        while (stack.length) {
+          let v = stack.shift();
+          let vIdx = v - 1
+
+            if (findingMaze[vIdx].props.isFinishPoint) {                
+
+                let path = v;
+      
+                while (path) {
+                    
+        
+                    let pathIdx = path - 1
+                    let next = findingMaze[pathIdx].props.dfsParent
+
+                    let pathCell = <Cell                                     
+                                            key={path}                                                            
+                                            adjList={findingMaze[pathIdx].props.adjList}
+                                            up={findingMaze[pathIdx].props.up}
+                                            down={findingMaze[pathIdx].props.down}
+                                            right={findingMaze[pathIdx].props.right}
+                                            left={findingMaze[pathIdx].props.left}    
+                                            isFinishPoint={findingMaze[pathIdx].props.isFinishPoint} 
+                                            dfsParent={findingMaze[pathIdx].props.dfsParent}                                   
+                                            dfsPath={true}
+                                            />
+        
+                    findingMaze.splice(pathIdx, 1, pathCell)
+                    let stateMaze = [...findingMaze]
+                    setMaze(stateMaze)
+                    await sleep(BASE_SPEED + speed);
+        
+                    path = next
+                }
+                 
+                let stateMaze = [...findingMaze]
+                setMaze(stateMaze) 
+                setIsFinding(false)   
+                setFound(true)                     
+                return;
+            }
+
+            if (!findingMaze[vIdx].props.isDFSMarked) {                
+
+                let markedCell = <Cell                                     
+                                    key={v}                                    
+                                    isDFSMarked={true} 
+                                    adjList={findingMaze[vIdx].props.adjList}
+                                    up={findingMaze[vIdx].props.up}
+                                    down={findingMaze[vIdx].props.down}
+                                    right={findingMaze[vIdx].props.right}
+                                    left={findingMaze[vIdx].props.left}    
+                                    isFinishPoint={findingMaze[vIdx].props.isFinishPoint} 
+                                    dfsParent={findingMaze[vIdx].props.dfsParent}                                   
+                                    />
+
+                findingMaze.splice(vIdx, 1, markedCell)
+                let stateMaze = [...findingMaze]
+                setMaze(stateMaze)
+                await sleep(BASE_SPEED + speed);
+                
+                findingMaze[vIdx].props.adjList.forEach(u => {
+                    let uIdx = u - 1
+                    if (!findingMaze[uIdx].props.isDFSMarked) {
+
+                        let childCell = <Cell                                     
+                        key={u}                                                            
+                        adjList={findingMaze[uIdx].props.adjList}
+                        up={findingMaze[uIdx].props.up}
+                        down={findingMaze[uIdx].props.down}
+                        right={findingMaze[uIdx].props.right}
+                        left={findingMaze[uIdx].props.left}    
+                        isFinishPoint={findingMaze[uIdx].props.isFinishPoint} 
+                        dfsParent={v}                                   
+                        />
+
+                        findingMaze.splice(uIdx, 1, childCell)
+                        let stateMaze = [...findingMaze]
+                        setMaze(stateMaze)
+                        
+
+                        stack.push(u);
+                    }
+                });
+            }
+            
+        } 
+    }
     
     return (
         <div className='Finder'>
             <div className='MazeSideBar'>
                 <div className='AlgoWrapper'>
-                    <span className={findingAlgo === DFS ? 'ActiveAlgo FindingButton' : 'FindingButton'}
-                        onClick={() => {}}>
+                    <span className={findingAlgo === DFS_ALGO ? 'ActiveAlgo FindingButton' : 'FindingButton'}
+                        onClick={() => setFindingAlgo(DFS_ALGO)}>
                         DFS
                     </span>
-                    <span className={findingAlgo === BFS ? 'ActiveAlgo FindingButton' : 'FindingButton'}
-                        onClick={() => {}}>
+                    <span className={findingAlgo === BFS_ALGO ? 'ActiveAlgo FindingButton' : 'FindingButton'}
+                        onClick={() => setFindingAlgo(BFS_ALGO)}>
                         BFS
                     </span>
                 </div>
 
-                <div className='SettingsWrapper'>
+                <div className='SettingsWrapper'>                    
                     <div className='TopSettings'>
                         <div className='SliderWrapper'>
                                 <Slider     
@@ -243,12 +395,12 @@ const Finder = () => {
                                     vertical/>
                                 <IoSpeedometerOutline size={`3rem`}/>
                             </div>
-
+{/* 
                             <div className='SliderWrapper'>
-                                <Slider     
+                                <Slider                                         
                                     onChange={(newLength) => {
-                                        setLength(MAX_LENGTH - newLength)
-                                        setFound(false)
+                                        setLength(MAX_LENGTH - newLength * 10)
+                                        setFound(false)                                        
                                     }}
                                     style={{ 
                                         height: '20rem',
@@ -256,12 +408,12 @@ const Finder = () => {
                                         margin: `1rem`                                                               
                                     }}                                
                                     min={0}
-                                    max={80}
-                                    defaultValue={40} 
+                                    max={2}
+                                    defaultValue={1} 
                                     disabled={isFinding}
                                     vertical/>
                                 <CgSize size={`3rem`}/>
-                            </div>
+                            </div> */}
                         </div>
                 
 
@@ -269,7 +421,7 @@ const Finder = () => {
 
                 {found ?
 
-                    <div className='FindWrapper' onClick={() => {}}>
+                    <div className='FindWrapper' onClick={initMaze}>
                         <span className={''}>
                             {'Generate'}</span>
                         <VscDebugRestart 
@@ -279,7 +431,11 @@ const Finder = () => {
 
                     : 
 
-                    <div className='FindWrapper' onClick={() => {}}>
+                    <div className='FindWrapper' onClick={() => {
+                            if (!isFinding) {
+                                findingAlgo === DFS_ALGO ? find(0) : find(length)
+                            }                      
+                        }}>
                         <span className={isFinding ? 'ActiveFind' : ''}>
                             {isFinding ? 'Finding' : 'Find'}</span>
                         <IoIosArrowForward 

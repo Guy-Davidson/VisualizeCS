@@ -235,7 +235,7 @@ const Sorter = () => {
                                         margin: `1rem`                                                               
                                     }}
                                     min={1}
-                                    max={9}
+                                    max={20}
                                     defaultValue={5} 
                                     disabled={isSorting}
                                     vertical/>
@@ -275,7 +275,11 @@ const Sorter = () => {
 
                     : 
 
-                    <div className='SortWrapper' onClick={sort}>
+                    <div className='SortWrapper' onClick={() => {
+                        if (!isSorting) {
+                            sort()
+                        }                      
+                    }}>
                         <span className={isSorting ? 'ActiveSort' : ''}>
                             {isSorting ? 'Sorting' : 'Sort'}</span>
                         <IoIosArrowForward 
