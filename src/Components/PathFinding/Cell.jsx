@@ -42,7 +42,10 @@ const Cell = (props) => {
         }
 
         setClasses(currentClasses)    
-    }, [props.isMarked, props.path, props.parent, props.findingAlgo])
+    }, [
+        props.isMarked, props.path, props.parent, props.findingAlgo, props.isFinishPoint,
+        props.up, props.down, props.right, props.left
+    ])
 
     return (
         <div className={classes && classes.join(' ')}>            

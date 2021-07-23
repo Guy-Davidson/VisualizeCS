@@ -234,9 +234,9 @@ const Sorter = () => {
                                         width: '1rem', 
                                         margin: `1rem`                                                               
                                     }}
-                                    min={1}
+                                    min={0}
                                     max={20}
-                                    defaultValue={5} 
+                                    defaultValue={10} 
                                     disabled={isSorting}
                                     vertical/>
                                 <IoSpeedometerOutline size={`3rem`}/>

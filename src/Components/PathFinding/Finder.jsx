@@ -12,7 +12,7 @@ const DFS_ALGO = 1
 const BFS_ALGO = 2
 
 const BASE_SPEED = 1
-const MAX_LENGTH = 30
+const MAX_LENGTH = 35
 
 
 const Finder = () => {
@@ -307,11 +307,11 @@ const Finder = () => {
                                     vertical/>
                                 <IoSpeedometerOutline size={`3rem`}/>
                             </div>
-{/* 
+
                             <div className='SliderWrapper'>
                                 <Slider                                         
                                     onChange={(newLength) => {
-                                        setLength(MAX_LENGTH - newLength * 10)
+                                        setLength(MAX_LENGTH - newLength)
                                         setFound(false)                                        
                                     }}
                                     style={{ 
@@ -320,12 +320,12 @@ const Finder = () => {
                                         margin: `1rem`                                                               
                                     }}                                
                                     min={0}
-                                    max={2}
-                                    defaultValue={1} 
+                                    max={20}
+                                    defaultValue={10} 
                                     disabled={isFinding}
                                     vertical/>
                                 <CgSize size={`3rem`}/>
-                            </div> */}
+                            </div>
                         </div>
                 
 
