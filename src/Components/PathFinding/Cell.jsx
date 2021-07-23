@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../../sass/Components/PathFinding/Cell.scss'
 
+const DFS_ALGO = 1
+const BFS_ALGO = 2
+
 const Cell = (props) => {
     const [classes, setClasses] = useState(null)
 
@@ -22,15 +25,24 @@ const Cell = (props) => {
         if (props.isFinishPoint) {            
             currentClasses.push('Finish')
         }
-        if (props.isDFSMarked) {            
-            currentClasses.push('dfsMarked')
+        if (props.isMarked) {      
+            if(props.findingAlgo === DFS_ALGO)  {
+                currentClasses.push('dfsMarked')
+            } else {
+                currentClasses.push('bfsMarked')
+            }
+            
         }
-        if (props.dfsPath) {            
-            currentClasses.push('dfsPath')
+        if (props.path) {                        
+            if(props.findingAlgo === DFS_ALGO)  {
+                currentClasses.push('dfsPath')
+            } else {
+                currentClasses.push('bfsPath')
+            }
         }
 
         setClasses(currentClasses)    
-    }, [props.isDFSMarked, props.dfsPath, props.dfsParent])
+    }, [props.isMarked, props.path, props.parent, props.findingAlgo])
 
     return (
         <div className={classes && classes.join(' ')}>            

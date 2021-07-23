@@ -35,8 +35,22 @@
     animation-timing-function: ease-in; 
 }
 
+.bfsMarked {    
+    animation-name: fadeInBFSMark;
+    animation-duration: 0.15s;    
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in; 
+}
+
 .dfsPath {
     animation-name: fadeInDFSPath;
+    animation-duration: 0.15s;    
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+}
+
+.bfsPath {
+    animation-name: fadeInBFSPath;
     animation-duration: 0.15s;    
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
@@ -47,7 +61,17 @@
     100% { background-color: rgba(218, 54, 51, 0.85);}
   }
 
+@keyframes fadeInBFSMark {
+    0% { background-color: inherit } 
+    100% { background-color: rgba(110, 64, 201, 0.75);}
+  }
+
 @keyframes fadeInDFSPath {
     0% { background-color: $highlight-gold; }
     100% { background-color: rgba(223, 115, 115, 0.75);} 
+  }
+
+@keyframes fadeInBFSPath {
+    0% { background-color: $highlight-gold; }
+    100% { background-color: rgba(224, 170, 255, 0.75);} 
   }

@@ -183,7 +183,10 @@ const Finder = () => {
         stack.push(vertex);
 
         while (stack.length) {
-          let v = stack.pop();
+          let v = -1
+
+          findingAlgo === DFS_ALGO ? v = stack.pop() : v = stack.shift()
+
           let vIdx = v - 1
 
             if (findingMaze[vIdx].props.isFinishPoint) {                
@@ -194,7 +197,7 @@ const Finder = () => {
                     
         
                     let pathIdx = path - 1
-                    let next = findingMaze[pathIdx].props.dfsParent
+                    let next = findingMaze[pathIdx].props.parent
 
                     let pathCell = <Cell                                     
                                             key={path}                                                            
@@ -204,8 +207,9 @@ const Finder = () => {
                                             right={findingMaze[pathIdx].props.right}
                                             left={findingMaze[pathIdx].props.left}    
                                             isFinishPoint={findingMaze[pathIdx].props.isFinishPoint} 
-                                            dfsParent={findingMaze[pathIdx].props.dfsParent}                                   
-                                            dfsPath={true}
+                                            parent={findingMaze[pathIdx].props.parent}                                   
+                                            path={true}
+                                            findingAlgo={findingAlgo}  
                                             />
         
                     findingMaze.splice(pathIdx, 1, pathCell)
@@ -223,18 +227,19 @@ const Finder = () => {
                 return;
             }
 
-            if (!findingMaze[vIdx].props.isDFSMarked) {                
+            if (!findingMaze[vIdx].props.isMarked) {                
 
                 let markedCell = <Cell                                     
                                     key={v}                                    
-                                    isDFSMarked={true} 
+                                    isMarked={true} 
                                     adjList={findingMaze[vIdx].props.adjList}
                                     up={findingMaze[vIdx].props.up}
                                     down={findingMaze[vIdx].props.down}
                                     right={findingMaze[vIdx].props.right}
                                     left={findingMaze[vIdx].props.left}    
                                     isFinishPoint={findingMaze[vIdx].props.isFinishPoint} 
-                                    dfsParent={findingMaze[vIdx].props.dfsParent}                                   
+                                    parent={findingMaze[vIdx].props.parent}     
+                                    findingAlgo={findingAlgo}                                
                                     />
 
                 findingMaze.splice(vIdx, 1, markedCell)
@@ -244,7 +249,7 @@ const Finder = () => {
                 
                 findingMaze[vIdx].props.adjList.forEach(u => {
                     let uIdx = u - 1
-                    if (!findingMaze[uIdx].props.isDFSMarked) {
+                    if (!findingMaze[uIdx].props.isMarked) {
 
                         let childCell = <Cell                                     
                         key={u}                                                            
@@ -254,7 +259,8 @@ const Finder = () => {
                         right={findingMaze[uIdx].props.right}
                         left={findingMaze[uIdx].props.left}    
                         isFinishPoint={findingMaze[uIdx].props.isFinishPoint} 
-                        dfsParent={v}                                   
+                        parent={v}                                   
+                        findingAlgo={findingAlgo}  
                         />
 
                         findingMaze.splice(uIdx, 1, childCell)
@@ -270,100 +276,6 @@ const Finder = () => {
         }        
     }
 
-    const BFS = async (vertex) => {
-        setIsFinding(true)
-        let findingMaze = [...maze]
-        let stack = [];        
-        stack.push(vertex);
-
-        while (stack.length) {
-          let v = stack.shift();
-          let vIdx = v - 1
-
-            if (findingMaze[vIdx].props.isFinishPoint) {                
-
-                let path = v;
-      
-                while (path) {
-                    
-        
-                    let pathIdx = path - 1
-                    let next = findingMaze[pathIdx].props.dfsParent
-
-                    let pathCell = <Cell                                     
-                                            key={path}                                                            
-                                            adjList={findingMaze[pathIdx].props.adjList}
-                                            up={findingMaze[pathIdx].props.up}
-                                            down={findingMaze[pathIdx].props.down}
-                                            right={findingMaze[pathIdx].props.right}
-                                            left={findingMaze[pathIdx].props.left}    
-                                            isFinishPoint={findingMaze[pathIdx].props.isFinishPoint} 
-                                            dfsParent={findingMaze[pathIdx].props.dfsParent}                                   
-                                            dfsPath={true}
-                                            />
-        
-                    findingMaze.splice(pathIdx, 1, pathCell)
-                    let stateMaze = [...findingMaze]
-                    setMaze(stateMaze)
-                    await sleep(BASE_SPEED + speed);
-        
-                    path = next
-                }
-                 
-                let stateMaze = [...findingMaze]
-                setMaze(stateMaze) 
-                setIsFinding(false)   
-                setFound(true)                     
-                return;
-            }
-
-            if (!findingMaze[vIdx].props.isDFSMarked) {                
-
-                let markedCell = <Cell                                     
-                                    key={v}                                    
-                                    isDFSMarked={true} 
-                                    adjList={findingMaze[vIdx].props.adjList}
-                                    up={findingMaze[vIdx].props.up}
-                                    down={findingMaze[vIdx].props.down}
-                                    right={findingMaze[vIdx].props.right}
-                                    left={findingMaze[vIdx].props.left}    
-                                    isFinishPoint={findingMaze[vIdx].props.isFinishPoint} 
-                                    dfsParent={findingMaze[vIdx].props.dfsParent}                                   
-                                    />
-
-                findingMaze.splice(vIdx, 1, markedCell)
-                let stateMaze = [...findingMaze]
-                setMaze(stateMaze)
-                await sleep(BASE_SPEED + speed);
-                
-                findingMaze[vIdx].props.adjList.forEach(u => {
-                    let uIdx = u - 1
-                    if (!findingMaze[uIdx].props.isDFSMarked) {
-
-                        let childCell = <Cell                                     
-                        key={u}                                                            
-                        adjList={findingMaze[uIdx].props.adjList}
-                        up={findingMaze[uIdx].props.up}
-                        down={findingMaze[uIdx].props.down}
-                        right={findingMaze[uIdx].props.right}
-                        left={findingMaze[uIdx].props.left}    
-                        isFinishPoint={findingMaze[uIdx].props.isFinishPoint} 
-                        dfsParent={v}                                   
-                        />
-
-                        findingMaze.splice(uIdx, 1, childCell)
-                        let stateMaze = [...findingMaze]
-                        setMaze(stateMaze)
-                        
-
-                        stack.push(u);
-                    }
-                });
-            }
-            
-        } 
-    }
-    
     return (
         <div className='Finder'>
             <div className='MazeSideBar'>
@@ -433,7 +345,7 @@ const Finder = () => {
 
                     <div className='FindWrapper' onClick={() => {
                             if (!isFinding) {
-                                findingAlgo === DFS_ALGO ? find(0) : find(length)
+                                findingAlgo === DFS_ALGO ? find(1) : find(length)
                             }                      
                         }}>
                         <span className={isFinding ? 'ActiveFind' : ''}>
