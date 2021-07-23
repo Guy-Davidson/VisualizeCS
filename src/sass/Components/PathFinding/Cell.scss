@@ -1,0 +1,27 @@
+@import '../../main.scss';
+
+.Cell {
+    border-style: solid;
+    border-color: $highlight-blue;
+    border-width: 1px;    
+}
+
+.Up {
+    border-top-color: transparent;
+}
+
+.Down {
+    border-bottom-color: transparent;
+}
+
+.Right {
+    border-right-color: transparent;
+}
+
+.Left {
+    border-left-color: transparent;
+}
+
+.Finish {
+    background-color: $highlight-gold;
+}

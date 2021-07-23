@@ -29,6 +29,11 @@
 
         .SettingsWrapper {
             display: flex;
+            flex-direction: column;
+
+            .TopSettings {
+                display: flex;
+            }
             
 
             .SliderWrapper {
@@ -69,10 +74,6 @@
             animation-duration: 0.4s;
             animation-iteration-count: infinite;
             animation-direction: alternate;
-        }
-
-        .HiddenArrow {
-            visibility: hidden;
         }
     }
 

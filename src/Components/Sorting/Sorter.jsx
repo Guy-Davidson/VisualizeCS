@@ -225,41 +225,43 @@ const Sorter = () => {
                 </div>
 
                 <div className='SettingsWrapper'>
-                    <div className='SliderWrapper'>
-                            <Slider     
-                                onChange={(newSpeed) => setSpeed(newSpeed) }
-                                style={{ 
-                                    height: '20rem',
-                                    width: '1rem', 
-                                    margin: `1rem`                                                               
-                                }}
-                                min={1}
-                                max={9}
-                                defaultValue={5} 
-                                disabled={isSorting}
-                                vertical/>
-                            <IoSpeedometerOutline size={`3rem`}/>
-                        </div>
-
+                    <div className='TopSettings'>
                         <div className='SliderWrapper'>
-                            <Slider     
-                                onChange={(newLength) => {
-                                    setLength(MAX_LENGTH - newLength)
-                                    setIsSorted(false)
-                                }}
-                                style={{ 
-                                    height: '20rem',
-                                    width: '1rem', 
-                                    margin: `1rem`                                                               
-                                }}                                
-                                min={0}
-                                max={80}
-                                defaultValue={40} 
-                                disabled={isSorting}
-                                vertical/>
-                            <CgSize size={`3rem`}/>
+                                <Slider     
+                                    onChange={(newSpeed) => setSpeed(newSpeed) }
+                                    style={{ 
+                                        height: '20rem',
+                                        width: '1rem', 
+                                        margin: `1rem`                                                               
+                                    }}
+                                    min={1}
+                                    max={9}
+                                    defaultValue={5} 
+                                    disabled={isSorting}
+                                    vertical/>
+                                <IoSpeedometerOutline size={`3rem`}/>
+                            </div>
+
+                            <div className='SliderWrapper'>
+                                <Slider     
+                                    onChange={(newLength) => {
+                                        setLength(MAX_LENGTH - newLength)
+                                        setIsSorted(false)
+                                    }}
+                                    style={{ 
+                                        height: '20rem',
+                                        width: '1rem', 
+                                        margin: `1rem`                                                               
+                                    }}                                
+                                    min={0}
+                                    max={80}
+                                    defaultValue={40} 
+                                    disabled={isSorting}
+                                    vertical/>
+                                <CgSize size={`3rem`}/>
+                            </div>
                         </div>
-                </div>
+                
 
                 {isSorted ?
 
@@ -282,6 +284,7 @@ const Sorter = () => {
                     </div>
 
                 }
+                </div>
             </div>
             <div className='Port'>
                 {bars}                
