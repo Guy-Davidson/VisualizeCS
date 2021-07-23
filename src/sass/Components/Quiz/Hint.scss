@@ -1,0 +1,25 @@
+@import '../../main.scss';
+
+.hint {
+
+    background-color: $bgColorLight;
+    list-style-type: none;    
+    padding: $padding;
+    border-radius: 7px;
+    margin: 1.5rem 0 1.5rem 0;    
+
+    &:hover {        
+        box-shadow: $boxShadow;        
+    }
+
+    .hintTitle{
+        display: flex;
+        justify-content: space-between;        
+        font-size: 1.6rem;
+        font-weight: 600;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}

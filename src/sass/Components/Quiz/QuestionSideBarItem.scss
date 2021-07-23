@@ -1,0 +1,19 @@
+@import '../../main.scss';
+
+.QuestionButton {            
+    margin: 1rem;
+    padding: 4px;                    
+    color: $gray-3;            
+    width: 90%;
+    min-width: fit-content;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(248, 249, 250, 0.1);
+    border-radius: 10px;
+    
+    
+
+    &:hover {
+        cursor: pointer;
+    }
+}

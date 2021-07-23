@@ -5,7 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import TopBar from './TopBar'
 import Sorter from './Sorting/Sorter'
 import Finder from './PathFinding/Finder';
-import Flower from './Flow/Flower';
+import Quizer from './Quiz/Quizer';
 
 const Console = () => {
     return (
@@ -14,7 +14,7 @@ const Console = () => {
             <Switch>
                 <Route path='/Sorting' exact component={Sorter} /> 
                 <Route path='/PathFinding' exact component={Finder} />
-                <Route path='/Flow' exact component={Flower}/>
+                <Route path='/Quiz' exact component={Quizer}/>
             </Switch>
         </div>
     )

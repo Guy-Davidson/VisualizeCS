@@ -1,0 +1,59 @@
+@import '../../main.scss';
+
+.solution {
+
+    background-color: $bgColorLight;
+    list-style-type: none;    
+    padding: $padding;
+    border-radius: 7px;
+    margin: 15px 0 15px 0;    
+
+    &:hover {        
+        box-shadow: $boxShadow;        
+    }
+
+    .solutionTitle{
+        display: flex;
+        justify-content: space-between;        
+        font-size: 16px;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        .right-tools {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;  
+            white-space: pre-wrap;  
+            
+            .tool {                
+                margin-right: 7px;
+            }
+        }
+    }
+
+    .solution-ace-editor{
+        border-radius: $borderRadious;  
+    }
+
+    .unlock-solution{
+        
+        .yes, .no {
+            padding: 0 7px 0 7px ;
+            margin: 0 7px 0 7px;
+            background-color: $bgColorLight;
+            border-radius: 7px;
+    
+            &:hover {                               
+                cursor: pointer;
+            }
+        }
+    
+        .clicked{
+            background-color: $bgColorOnClickLight;
+            box-shadow: none;        
+        }
+    }
+}
+

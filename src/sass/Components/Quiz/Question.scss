@@ -1,0 +1,149 @@
+@import '../../main.scss';
+
+.question-editor {
+    
+    background-color: $bgColorDark;
+    border: $border;
+    border-radius: $borderRadious;
+    color: $color;
+    margin: $margin;
+    padding: $padding;
+    overflow-y: scroll;
+
+    .feature {
+        display: flex;
+        margin-bottom: 10px;
+
+        .option {
+            padding: 0 7px 0 7px ;
+            margin: 0 7px 0 7px;
+            background-color: $bgColorLight;
+            border-radius: 7px;
+    
+            &:hover {        
+                box-shadow: $boxShadow;        
+                cursor: pointer;
+            }
+        }
+    
+        .clicked{
+            background-color: $bgColorOnClickLight;
+        }
+    }
+
+    .solutions {
+
+        .hacking-exp{
+            font-weight: 700;
+        }
+    }
+
+    .question{    
+
+        .meta-data {
+            display: flex;        
+            font-size: 16px;
+            font-weight: 600;    
+            margin-bottom: 12px;            
+    
+            .difficulty {
+                display: flex;
+                justify-content: space-between;
+                margin-right: 12px;
+                white-space: pre-wrap;
+            }
+    
+            .category, .exp{
+                margin-right: 12px;
+            }
+        }
+    
+        .description {
+    
+            .header{
+                display: flex;            
+    
+                .title{
+                    font-size: 28px;
+                    margin-right: 10px;
+                }
+        
+                .isCompleted{
+                    margin-top: auto;
+                    margin-right: 10px;
+                    color:#3FB950;            
+                }
+        
+                .iStared {
+                    margin-top: auto;
+                    margin-right: 10px;
+                    color: #ffba08;
+        
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+    
+            .text {
+                font-size: 16px;
+            }
+        }
+    
+        .IO {
+            
+            .input{
+    
+                .title{
+                    font-size: 20px;
+                }
+    
+                .code {        
+                    white-space: pre-wrap;        
+                    line-height: 1.5;
+                    font-size: 16px;
+                    padding: $padding;
+                    margin: 10px 0 10px 0;
+                    border-radius: 6px;                
+                    background-color: $bgColorLight;
+                }
+            }
+    
+            .output{
+    
+                .title{
+                    font-size: 20px;
+                }
+    
+                .code {        
+                    white-space: pre-wrap;        
+                    line-height: 1.5;
+                    font-size: 16px;
+                    padding: $padding;
+                    margin: 10px 0 10px 0;
+                    border-radius: 6px;                
+                    background-color: $bgColorLight;
+                }
+            }
+        }
+    
+        .hints {
+    
+            .title{
+                font-size: 20px;
+            }
+    
+            .list {
+                
+                ul, li {                
+                    list-style-position: inside;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+    
+    }
+
+}
+

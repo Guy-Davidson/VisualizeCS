@@ -1,0 +1,63 @@
+@import '../../main.scss';
+
+.Quizer {
+    margin: 1rem;    
+    margin-top: 2rem;    
+    display: grid;
+    grid-template-columns: 1fr 8fr;       
+    height: 100%;
+
+    .QuizSideBar {
+        font-size: 2rem;
+        display: flex;        
+        flex-direction: column;    
+        justify-content: space-between;
+        
+
+        .QuistionsWrapper {
+            display: flex;
+            flex-direction: column;    
+
+            .ActiveQuestion {  
+                color: $highlight-blue; 
+                animation-name: fadeInQuestion;
+                animation-duration: 0.15s;    
+                animation-fill-mode: forwards;
+                animation-timing-function: ease-in; 
+            }
+        }
+
+        .QuestionButton {            
+            margin: 1rem;
+            padding: 4px;                    
+            color: $gray-3;            
+            width: 90%;
+            min-width: fit-content;
+            display: flex;
+            justify-content: center;
+            background-color: rgba(248, 249, 250, 0.1);
+            border-radius: 10px;
+            
+            
+    
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .Editor {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@keyframes fadeInQuestion {
+    0% { color: $gray-3; }
+    100% { 
+        color: white;
+        background-color: rgba(248, 249, 250, 0.25);        
+    }
+  }

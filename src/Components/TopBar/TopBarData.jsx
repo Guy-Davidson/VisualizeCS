@@ -1,6 +1,6 @@
 import { ImStatsBars } from 'react-icons/im';
 import { GrGraphQl } from 'react-icons/gr';
-import { TiFlowSwitch } from 'react-icons/ti';
+import { BsReverseLayoutTextWindowReverse } from 'react-icons/bs';
 
 
 export const data = [
@@ -17,9 +17,9 @@ export const data = [
         key: 'PathFinding'
     },
     {
-        name: 'Flow',
-        icon: <TiFlowSwitch />,
-        link: 'Flow',
-        key: 'Flow'
+        name: 'Quiz',
+        icon: <BsReverseLayoutTextWindowReverse size={'2.7rem'} />,
+        link: 'Quiz',
+        key: 'Quiz'
     }
 ]
