@@ -12,7 +12,7 @@ export const db = [
         solutions:[{text:'sol 1', price:120, _id:0}, {text:'sol 2', price:120, _id:1}], 
         inputCode:'[5, 3, 1, 2, 4]',
         outputCode:'[1, 2, 3, 4, 5]',
-        solutionDefault:'',
+        solutionDefault:'const bubleSort = (array) => { \n \treturn [] \n }',
         maxEXP:1000,
         link: 'BubbleSort'
     }, 
@@ -27,7 +27,7 @@ export const db = [
         solutions:[{text:'sol 1', price:120, _id:0}, {text:'sol 2', price:120, _id:1}], 
         inputCode:'[5, 3, 1, 2, 4]',
         outputCode:'[1, 2, 3, 4, 5]',
-        solutionDefault:'',
+        solutionDefault:'const mergeSort = (array) => { \n \treturn [] \n }',
         maxEXP:1000,
         link: 'MergeSort'
     },
@@ -43,6 +43,7 @@ export const db = [
         inputCode:'function bubbleSort(array) ...',
         inputCode:'[5, 3, 1, 2, 4]',
         outputCode:'[1, 2, 3, 4, 5]',
+        solutionDefault:'const quickSort = (array) => { \n \treturn [] \n }',
         maxEXP:1000,
         link:"QuickSort"
     }, 
@@ -57,7 +58,7 @@ export const db = [
         solutions:[{text:'sol 1', price:120, _id:0}, {text:'sol 2', price:120, _id:1}], 
         inputCode:'Graph: A \n \t   /  \\ \n \t B   C \n        /  \t  \n     D',
         outputCode:"['A', 'B', 'D', 'C']",
-        solutionDefault:'',
+        solutionDefault:'const DFS = (graph) => { \n \treturn [] \n }',
         maxEXP:4000,
         link:"DFS"
     },
@@ -73,6 +74,7 @@ export const db = [
         inputCode:'function bubbleSort(array) ...',
         inputCode:'Graph: A \n \t   /  \\ \n \t B   C \n        /  \t  \n     D',
         outputCode:"['A', 'B', 'C', 'D']",
+        solutionDefault:'const BFS = (graph) => { \n \treturn [] \n }',
         maxEXP:4000,
         link:"BFS"
     },

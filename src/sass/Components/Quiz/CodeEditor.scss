@@ -1,0 +1,17 @@
+@import '../../main.scss';
+
+.code-editor{
+    
+
+    background-color: $bgColorDark;        
+    color: $color;
+    margin: $margin;
+    padding: $padding;    
+    max-height: 80vh;
+    min-height: 80vh;
+    overflow-y: hidden;
+
+    .ace-editor {
+        border-radius: $borderRadious;        
+    }
+}

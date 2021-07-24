@@ -14,10 +14,7 @@ const Quizer = () => {
     const [questionsList, setQuestionList] = useState([]);
     let url = useLocation();
 
-    const getQuestionsList = async () => {        
-
-        // TODO: Implement api
-        // let newQuestionList = await api.getQuestionList();    
+    const getQuestionsList = async () => {          
         let newQuestionList = db;    
         setQuestionList(newQuestionList);
     }
@@ -28,8 +25,7 @@ const Quizer = () => {
 
     useEffect( () => {
         
-        let urlActiveQuestion = url.pathname.split('/')[url.pathname.split('/').length - 1]
-        console.log(urlActiveQuestion);
+        let urlActiveQuestion = url.pathname.split('/')[url.pathname.split('/').length - 1]        
         let newactiveQuestion = questionsList.find(q => q.link === urlActiveQuestion)
         setActiveQuestion(newactiveQuestion)
     }, [url, questionsList]) 

@@ -1,0 +1,65 @@
+@import '../../main.scss';
+
+.code-editor-header {    
+    background-color: $bgColorDark;    
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: white;
+
+    .soultion-version {
+        padding: 0 7px 0 7px ;
+        margin: 0 7px 0 7px;
+        background-color: $bgColorLight;
+        border-radius: 7px;
+
+        &:hover {        
+            box-shadow: $boxShadow;        
+            cursor: pointer;
+        }
+    }
+
+    .clicked{
+        background-color: $bgColorOnClickLight;
+        box-shadow: none;        
+    }
+
+    .undo-play {
+        display: flex;
+
+        .play {
+            margin: 0 10px 0 0;
+    
+            &:hover {                          
+                cursor: pointer;
+            }
+        }
+    
+        .reset {
+            margin: 0 0px 0 10px;
+    
+            &:hover {                         
+                cursor: pointer;
+            }
+        }
+
+        .pop-up {
+            margin-right: 10px;
+
+            .undo-option {
+                padding: 0 7px 0 7px ;
+                margin: 0 7px 0 7px;
+                background-color: $bgColorLight;
+                border-radius: 7px;
+        
+                &:hover {        
+                    box-shadow: $boxShadow;        
+                    cursor: pointer;
+                }
+            }
+
+        }
+
+    }
+    
+}
