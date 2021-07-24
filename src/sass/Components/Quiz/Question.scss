@@ -3,12 +3,11 @@
 .question-editor {
     
     background-color: $bgColorDark;
-    border: $border;
-    border-radius: $borderRadious;
     color: $color;
     margin: $margin;
-    padding: $padding;
-    overflow-y: hidden;
+    padding: $padding;        
+    overflow-y: scroll;
+    max-height: 75vh;
 
     .feature {
         display: flex;
@@ -48,6 +47,7 @@
     
             .difficulty {
                 display: flex;
+                flex-direction: column;
                 justify-content: space-between;
                 margin-right: 12px;
                 white-space: pre-wrap;
@@ -71,7 +71,7 @@
                 .isCompleted{
                     margin-top: auto;
                     margin-right: 10px;
-                    color:#3FB950;            
+                    color:#3FB950;                                
                 }
         
                 .iStared {

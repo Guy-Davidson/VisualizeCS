@@ -7,13 +7,11 @@
 }
 
 .code-editor{
-    
-
     background-color: $bgColorDark;        
     color: $color;
     margin: $margin;     
     height: 100%;
-    overflow-y: auto;
+    
 
     .ace-editor {
         border-radius: $borderRadious;        
