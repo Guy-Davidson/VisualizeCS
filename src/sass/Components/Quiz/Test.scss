@@ -1,0 +1,29 @@
+@import '../../main.scss';
+
+.Test{
+    
+
+    .Loader {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .CorrectIcon {
+        color: green;
+        margin-bottom: 1px;
+    }
+
+    .WrongIcon {
+        color: red;
+        margin-bottom: 1px;
+    }
+
+    .TestResult {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 2px;
+    }
+}

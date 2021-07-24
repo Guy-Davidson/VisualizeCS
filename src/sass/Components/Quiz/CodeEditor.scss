@@ -1,15 +1,19 @@
 @import '../../main.scss';
 
+.EditorWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .code-editor{
     
 
     background-color: $bgColorDark;        
     color: $color;
-    margin: $margin;
-    padding: $padding;    
-    max-height: 80vh;
-    min-height: 80vh;
-    overflow-y: hidden;
+    margin: $margin;     
+    height: 100%;
+    overflow-y: auto;
 
     .ace-editor {
         border-radius: $borderRadious;        

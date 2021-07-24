@@ -12,9 +12,10 @@ export const db = [
         solutions:[{text:'sol 1', price:120, _id:0}, {text:'sol 2', price:120, _id:1}], 
         inputCode:'[5, 3, 1, 2, 4]',
         outputCode:'[1, 2, 3, 4, 5]',
-        solutionDefault:'const bubleSort = (array) => { \n \treturn [] \n }',
+        solutionDefault:'const bubbleSort = (array) => { \n \treturn [] \n }',
         maxEXP:1000,
-        link: 'BubbleSort'
+        link: 'BubbleSort',
+        tests: [{input:`\n bubbleSort([1,4,5,2,3])`, output:[1,2,3,4,5]}, {input:`\n bubbleSort([3,2,3,1])`, output:[1,2,3,3]}, {input:`\n bubbleSort([3,2,1])`, output:[1,2,3]}, {input:`\n bubbleSort([1])`, output:[1]}, {input:`\n bubbleSort([4,3,2,1])`, output:[1,2,3,4]}, {input:`\n bubbleSort([1,2,3,4,5,1,2,3,4,5])`, output:[1,1,2,2,3,3,4,4,5,5]}]
     }, 
     {
         id:1,
@@ -29,7 +30,8 @@ export const db = [
         outputCode:'[1, 2, 3, 4, 5]',
         solutionDefault:'const mergeSort = (array) => { \n \treturn [] \n }',
         maxEXP:1000,
-        link: 'MergeSort'
+        link: 'MergeSort',
+        tests: [{input:`\n mergeSort([1,4,5,2,3])`, output:[1,2,3,4,5]}, {input:`\n mergeSort([3,2,3,1])`, output:[1,2,3,3]}, {input:`\n mergeSort([3,2,1])`, output:[1,2,3]}, {input:`\n mergeSort([1])`, output:[1]}, {input:`\n mergeSort([4,3,2,1])`, output:[1,2,3,4]}, {input:`\n mergeSort([1,2,3,4,5,1,2,3,4,5])`, output:[1,1,2,2,3,3,4,4,5,5]}]
     },
     {
         id:2,
@@ -45,7 +47,8 @@ export const db = [
         outputCode:'[1, 2, 3, 4, 5]',
         solutionDefault:'const quickSort = (array) => { \n \treturn [] \n }',
         maxEXP:1000,
-        link:"QuickSort"
+        link:"QuickSort",
+        tests: [{input:`\n quickSort([1,4,5,2,3])`, output:[1,2,3,4,5]}, {input:`\n quickSort([3,2,3,1])`, output:[1,2,3,3]}, {input:`\n quickSort([3,2,1])`, output:[1,2,3]}, {input:`\n quickSort([1])`, output:[1]}, {input:`\n quickSort([4,3,2,1])`, output:[1,2,3,4]}, {input:`\n quickSort([1,2,3,4,5,1,2,3,4,5])`, output:[1,1,2,2,3,3,4,4,5,5]}]
     }, 
     {
         id:3,
@@ -60,7 +63,8 @@ export const db = [
         outputCode:"['A', 'B', 'D', 'C']",
         solutionDefault:'const DFS = (graph) => { \n \treturn [] \n }',
         maxEXP:4000,
-        link:"DFS"
+        link:"DFS",
+        tests:[]        
     },
     {
         id:4,
@@ -76,6 +80,7 @@ export const db = [
         outputCode:"['A', 'B', 'C', 'D']",
         solutionDefault:'const BFS = (graph) => { \n \treturn [] \n }',
         maxEXP:4000,
-        link:"BFS"
+        link:"BFS",
+        tests:[]
     },
 ]

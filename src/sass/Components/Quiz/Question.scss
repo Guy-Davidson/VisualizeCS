@@ -8,7 +8,7 @@
     color: $color;
     margin: $margin;
     padding: $padding;
-    overflow-y: scroll;
+    overflow-y: hidden;
 
     .feature {
         display: flex;
@@ -61,7 +61,7 @@
         .description {
     
             .header{
-                display: flex;            
+                display: flex;                       
     
                 .title{
                     font-size: 28px;

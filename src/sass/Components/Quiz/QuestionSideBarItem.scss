@@ -28,4 +28,9 @@
     border-bottom-color: $highlight-1;
     color: white !important;
 
+    &:hover {
+        border-bottom-color: $highlight-1;
+        cursor: pointer;
+    }
+
 }

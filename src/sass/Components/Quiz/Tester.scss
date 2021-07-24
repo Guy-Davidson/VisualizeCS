@@ -1,0 +1,13 @@
+@import '../../main.scss';
+
+.Tester {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: $margin;    
+    border: $border;
+    border-radius: $borderRadious;
+    padding: $padding;
+    min-height: 10vh;
+}

@@ -141,10 +141,10 @@ const Question = (props) => {
                             setIsCompleted(!isCompleted);
                             handleRunClick();
                         }}>                         
-                            {isCompleted ? <FaCircle size='1.3em'/> : <FiCircle size='1.3em'/>}
+                            {isCompleted ? <FaCircle size='1.3em'/> : <FiCircle size='2.5rem'/>}
                         </span>
                         <span onClick={() => setIsStared(!isStared)} className='iStared'>
-                             {isStared ? <FaStar size='1.3em' /> : <FaRegStar size='1.3em' />}
+                             {isStared ? <FaStar size='1.3em' /> : <FaRegStar size='2.5rem' />}
                         </span>
                     </div>
                     <div className='text'>
