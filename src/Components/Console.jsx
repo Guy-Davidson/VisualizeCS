@@ -14,7 +14,7 @@ const Console = () => {
             <Switch>
                 <Route path='/Sorting' exact component={Sorter} /> 
                 <Route path='/PathFinding' exact component={Finder} />
-                <Route path='/Quiz' exact component={Quizer}/>
+                <Route path='/Quiz' component={Quizer}/>
             </Switch>
         </div>
     )

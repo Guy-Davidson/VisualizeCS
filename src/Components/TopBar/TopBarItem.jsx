@@ -8,8 +8,8 @@ const TopBarItem = (props) => {
     let url = useLocation();
 
     useEffect( () => {        
-        `/${item.key}` === url.pathname ? setIsActive(true) : setIsActive(false)
-        
+        (url.pathname).split('/').includes(`${item.key}`) ? setIsActive(true) : setIsActive(false)
+
     }, [url, item.key])
 
     return (        

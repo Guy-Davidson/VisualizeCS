@@ -10,10 +10,22 @@
     justify-content: center;
     background-color: rgba(248, 249, 250, 0.1);
     border-radius: 10px;
+    border-bottom: solid;    
+    border-bottom-width: 2px; 
+    border-bottom-color: $bg-dark-1;
     
     
 
     &:hover {
+        border-bottom-color: $highlight-blue;
         cursor: pointer;
     }
+
+}
+
+.ActiveQuestion {    
+
+    border-bottom-color: $highlight-1;
+    color: $gray-1 !important;    
+
 }

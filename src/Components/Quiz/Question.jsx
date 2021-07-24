@@ -19,8 +19,7 @@ const Question = (props) => {
     const [solutionLockList, setSolutionLockList] = useState({})
 
     useEffect(() => {
-        initSolutionLockList();
-        console.log("initing");
+        initSolutionLockList();        
     }, [])
 
     const initSolutionLockList = () => {             

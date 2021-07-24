@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../sass/Components/Quiz/Quizer.scss'
+import { useLocation } from 'react-router-dom'
 
 import Question from './Question'
 import CodeEditor from './CodeEditor'
@@ -7,21 +8,31 @@ import QuestionSideBarItem from './QuestionSideBarItem'
 
 import { db } from './QuizData'
 
-const BUBBLE_QUESTION = 0
-const MERGE_QUESTION = 1
-const QUICK_QUESTION = 2
-const DFS_QUESTION = 3
-const BFS_QUESTION = 4
 
+const Quizer = () => {        
+    const [activeQuestion, setActiveQuestion] = useState(null)
+    const [questionsList, setQuestionList] = useState([]);
+    let url = useLocation();
 
-const Quizer = () => {
-    
-    const [questionIdx, setQuestionIdx] = useState(0)
-    const [question, setQuestion] = useState(null)
+    const getQuestionsList = async () => {        
+
+        // TODO: Implement api
+        // let newQuestionList = await api.getQuestionList();    
+        let newQuestionList = db;    
+        setQuestionList(newQuestionList);
+    }
 
     useEffect( () => {        
-        setQuestion(db[questionIdx])
-    }, [questionIdx])
+        getQuestionsList()
+    }, [])
+
+    useEffect( () => {
+        
+        let urlActiveQuestion = url.pathname.split('/')[url.pathname.split('/').length - 1]
+        console.log(urlActiveQuestion);
+        let newactiveQuestion = questionsList.find(q => q.link === urlActiveQuestion)
+        setActiveQuestion(newactiveQuestion)
+    }, [url, questionsList]) 
 
     const renderSideBar = () => {  
         return (
@@ -31,7 +42,8 @@ const Quizer = () => {
                         idx={idx}
                         key={idx}
                         title={q.title} 
-                        setQuestionIdx={setQuestionIdx}/>
+                        link={q.link}
+                        />
                 )
             })
         )      
@@ -46,8 +58,8 @@ const Quizer = () => {
             </div>
 
             <div className='Editor'>
-                {question && <Question question={question}/>}                  
-                {question && <CodeEditor question={question}/>}
+                {activeQuestion && <Question question={activeQuestion}/>}                  
+                {activeQuestion && <CodeEditor question={activeQuestion}/>}
             </div>
         </div>
     )

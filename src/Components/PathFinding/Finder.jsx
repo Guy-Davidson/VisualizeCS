@@ -72,9 +72,9 @@ const Finder = () => {
             let r = Math.random()
             let r2 = -1
 
-            if (r1 == length ** 2) {
+            if (r1 === length ** 2) {
                 continue;
-            } else if (r < 0.5 && (r1 + length < length ** 2) || (randCol % length == 0)) {
+            } else if (r < 0.5 && (r1 + length < length ** 2) || (randCol % length === 0)) {
                 r2 = r1 + length;
             } else {
                 r2 = r1 + 1;
@@ -91,12 +91,12 @@ const Finder = () => {
             if (findCell1 !== findCell2) {                
 
                 for (let i = 0; i < components.length; i++) {
-                    if (components[i] == findCell1) {
+                    if (components[i] === findCell1) {
                         components[i] = findCell2;
                     }
                 }                         
 
-                if (cell1 + 1 == cell2) {                    
+                if (cell1 + 1 === cell2) {                    
                     
                     let newCell1 = <Cell 
                                         key={cell1}
@@ -123,7 +123,7 @@ const Finder = () => {
                     currentMaze.splice(cell1Idx, 1, newCell1)    
                     currentMaze.splice(cell2Idx, 1, newCell2)   
                 }
-                else if (cell1 + length == cell2) {                    
+                else if (cell1 + length === cell2) {                    
 
 
                     let newCell1 = <Cell 
