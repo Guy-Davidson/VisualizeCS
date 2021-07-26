@@ -12,11 +12,11 @@ const HomePage = () => {
                     size={`25rem`}
                     className='icon'/>  
                 <div className='Text'>
-                    {`Welcome \n to AlgoSight`}
+                    {`Welcome \n to Visualize CS`}
                 </div>  
             </div>  
             <div className='TagText'>
-                Your CS Guide</div>                    
+            Finally Seeing Clearly</div>                    
         </div>
     )
 }

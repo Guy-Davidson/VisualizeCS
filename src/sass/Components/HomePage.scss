@@ -9,6 +9,7 @@
     align-items: center;
     color: white;
     font-family: monospace;
+    font-weight: 600;
 
     .TitleWraper{
         display: flex;
@@ -30,13 +31,14 @@
             overflow: hidden;
             box-shadow: 0 5px 15px 0px rgba(0,0,0, 0.6);
             padding: 0px;
-            margin: 15px;
+            margin: 35px;
         }
     }
 
     .TagText {
         font-size: 3rem;
-        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial;   
+        // font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial;   
+        font-weight:100;        
     }
 }
 
