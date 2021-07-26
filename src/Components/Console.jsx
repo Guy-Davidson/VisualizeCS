@@ -17,6 +17,7 @@ const Console = () => {
                 <Route path='/PathFinding' exact component={Finder} />
                 <Route path='/Quiz' component={Quizer}/>
                 <Route path='/' exact component={HomePage}/>
+                <Route path='/VisualizeCS' exact component={HomePage}/>
             </Switch>
         </div>
     )
