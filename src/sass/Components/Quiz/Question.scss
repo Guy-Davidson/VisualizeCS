@@ -14,19 +14,27 @@
         margin-bottom: 10px;
 
         .option {
-            padding: 0 7px 0 7px ;
-            margin: 0 7px 0 7px;
+            padding: 0.4rem;
+            margin: 0 10px 0 0px;
             background-color: $bgColorLight;
             border-radius: 7px;
+            color: $gray-3;        
     
             &:hover {        
-                box-shadow: $boxShadow;        
+                color: $gray-2;            
                 cursor: pointer;
             }
         }
     
         .clicked{
-            background-color: $bgColorOnClickLight;
+            background-color: $highlight-blue;
+            cursor: pointer;
+            color: white;            
+            
+            &:hover {        
+                color: white;          
+                cursor: pointer;
+            }
         }
     }
 
@@ -40,8 +48,8 @@
     .question{    
 
         .meta-data {
-            display: flex;        
-            font-size: 16px;
+            display: flex;      
+            justify-content: space-around;  
             font-weight: 600;    
             margin-bottom: 12px;            
     
@@ -56,6 +64,19 @@
             .category, .exp{
                 margin-right: 12px;
             }
+
+            .full-stats {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-size: 2rem;
+
+                .stats {
+                    font-weight: 400;
+                    font-size: 1.7rem;
+                }
+            }
+
         }
     
         .description {

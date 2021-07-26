@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import '../../sass/Components/Quiz/Test.scss'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner"; 
-import { GrStatusGood, GrClose } from 'react-icons/gr';
 import { FiCheckCircle, FiX } from 'react-icons/fi';
 
 const Test = (props) => {
@@ -12,10 +11,16 @@ const Test = (props) => {
 
     const [isLoading, setIsLoading] = useState(true)
     const [isCorrect, setIsCorrect] = useState(false)
-    const [isWrong, setIsWrong] = useState(false)     
+    const [isWrong, setIsWrong] = useState(false)         
 
     useEffect( () => {
-        let userResult = eval(userInput + input)
+        let userResult = null
+        try {            
+            userResult = eval(userInput + input)
+          } catch (error) {            
+            props.setGotError(true)
+          }
+          
         arrayEquals(userResult, output) ? setIsCorrect(true) : setIsWrong(true)
     }, [])
 
@@ -51,7 +56,7 @@ const Test = (props) => {
                     className='CorrectIcon'
                     size={`4.5rem`}                     
                     />
-                <span>Pass!</span>
+                <span className='ResultText'>Pass!</span>
             </div>            
         )
     }
@@ -62,7 +67,7 @@ const Test = (props) => {
                 <FiX 
                     className='WrongIcon'
                     size={`5rem`} />
-                <span>Failed</span>
+                <span className='ResultText'>Failed</span>
             </div>            
         )
     }

@@ -116,20 +116,20 @@ const Question = (props) => {
         return (
             <div className='question'>
                 <div className='meta-data'>
-                    <div className='difficulty'>
-                        <span>Difficulty: </span>
+                    <div className='difficulty full-stats'>
+                        <span className='stats'>Difficulty </span>
                         {renderDifficulty()}
                     </div>
-                    <div className='category'>
-                        <span>Category: </span>
+                    <div className='category full-stats'>
+                        <span className='stats'>Category </span>
                         <span>{question.category}</span>
                     </div>
-                    <div className='exp'>
-                        <span>Credits: </span>
+                    <div className='exp full-stats'>
+                        <span className='stats'>Credits </span>
                         <span style={{whiteSpace:'nowrap'}}>{question.maxEXP} <FaCoins style={{color:'#ffba08'}}/></span>
                     </div>
-                    <div className='submissions'>
-                        <span>Successful Submissions: </span>
+                    <div className='submissions full-stats'>
+                        <span className='stats'>Submissions </span>
                         <span>{question.successfulSubmission}+</span>
                     </div>
                 </div>

@@ -8,8 +8,7 @@ const CodeEditorHeader = (props) => {
 
     return (
         <div className='code-editor-header'>
-            <div>
-                <span>Your Solutions</span>    
+            <div>                 
                 <span className={version === 1 ? 'soultion-version clicked' : 'soultion-version'}
                     onClick={() => {
                         setVersion(1);
@@ -32,7 +31,7 @@ const CodeEditorHeader = (props) => {
             <div className='undo-play'>
                 {showUndo ?
                 <div className='pop-up'>
-                    <span>Restore Default Code?</span>
+                    <span>Restore?</span>
                     <span 
                     className='undo-option'
                     onClick={() => props.handleResetClick()}

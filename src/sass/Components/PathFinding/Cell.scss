@@ -23,9 +23,11 @@
     border-left-color: transparent;
 }
 
-.Finish {
-    background-color: $highlight-gold;
-    background-color: linear-gradient(200deg, #fff75e, #ff8800)
+.Finish {    
+    background-color: linear-gradient(200deg, #fff75e, #ff8800);
+    background-image: url("../../../images/treasure-box-icon-13-removebg-preview.png");
+    background-position: center;
+    background-size: cover;
 }
 
 .dfsMarked {    

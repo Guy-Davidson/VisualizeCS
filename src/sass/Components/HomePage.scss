@@ -1,0 +1,56 @@
+@import '../main.scss';
+
+.HomePage {    
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: monospace;
+
+    .TitleWraper{
+        display: flex;
+        align-items: center;
+
+        .Text{
+            font-size: 5rem;
+            white-space: pre-wrap;
+        }
+
+        .icon {
+            color: #00ade5;            
+            transform: translatey(0px);
+	        animation: float 4s ease-in-out infinite;            
+            background-color: transparent;
+            box-sizing: border-box;
+            border: 2px #0087a6 solid;
+            border-radius: 100%;
+            overflow: hidden;
+            box-shadow: 0 5px 15px 0px rgba(0,0,0, 0.6);
+            padding: 0px;
+            margin: 15px;
+        }
+    }
+
+    .TagText {
+        font-size: 3rem;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial;   
+    }
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(255,255,255,0.6);
+		transform: translatey(0px) rotate(0deg);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(255,255,255,0.2);
+		transform: translatey(-20px) rotate(-10deg);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(255,255,255,0.6);
+		transform: translatey(0px) rotate(5);
+	}
+}

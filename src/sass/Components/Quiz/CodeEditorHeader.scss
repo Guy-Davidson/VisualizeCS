@@ -4,24 +4,31 @@
     background-color: $bgColorDark;    
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-    color: white;
+    margin-bottom: 10px;    
+    color: $gray-3;        
 
-    .soultion-version {
-        padding: 0 7px 0 7px ;
-        margin: 0 7px 0 7px;
+    .soultion-version {        
+        padding: 0.4rem;
+        margin: 0 10px 0 0px;
         background-color: $bgColorLight;
         border-radius: 7px;
 
         &:hover {        
-            box-shadow: $boxShadow;        
+            color: $gray-2;            
             cursor: pointer;
         }
     }
 
     .clicked{
-        background-color: $bgColorOnClickLight;
-        box-shadow: none;        
+        background-color: $highlight-blue;
+        cursor: pointer;
+        color: white;
+        box-shadow: none;     
+        
+        &:hover {        
+            color: white;          
+            cursor: pointer;
+        }
     }
 
     .undo-play {

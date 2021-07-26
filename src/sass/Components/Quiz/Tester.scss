@@ -2,13 +2,22 @@
 
 .Tester {
     color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin: $margin;    
     border: $border;
     border-radius: $borderRadious;
     padding: 10px;
     min-height: 10vh;
     margin-top: 15px;
+
+    .TestWrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .Error {
+        color: red;
+        display: flex;        
+        align-items: center;
+    }
 }

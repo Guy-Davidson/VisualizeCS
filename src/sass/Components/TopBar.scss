@@ -3,6 +3,30 @@
 .TopBar {
     font-size: 3rem;
     display: flex;
-    justify-content: flex-start;    
+    justify-content: space-between;         
+    width: 100%;
 
+    .ItemsWrapper {
+        display: flex;
+        justify-content: flex-start;          
+    }
+
+    .IconsWrapper {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;        
+        width: 10rem;
+
+        .icon {
+            color: $gray-1;
+             
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .Home {
+            transform: translateY(4px);
+        }
+    }
 }

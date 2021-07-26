@@ -19,7 +19,7 @@ export const db = [
     }, 
     {
         id:1,
-        difficulty:1,
+        difficulty:2,
         category:'Sorting',
         successfulSubmission:32454,
         title:'Merge Sort',
@@ -35,7 +35,7 @@ export const db = [
     },
     {
         id:2,
-        difficulty:1,
+        difficulty:3,
         category:'Sorting',
         successfulSubmission:1235,
         title:'Quick Sort',

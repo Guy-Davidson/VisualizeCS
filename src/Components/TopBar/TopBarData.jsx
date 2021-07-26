@@ -19,7 +19,7 @@ export const data = [
     {
         name: 'Quiz',
         icon: <BsReverseLayoutTextWindowReverse size={'2.7rem'} />,
-        link: 'Quiz',
+        link: 'Quiz/BubbleSort',
         key: 'Quiz'
     }
 ]
