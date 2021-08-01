@@ -6,8 +6,9 @@ import Question from './Question'
 import CodeEditor from './CodeEditor'
 import QuestionSideBarItem from './QuestionSideBarItem'
 
-import { db } from './QuizData'
+import { createApiClient } from '../../api/api';
 
+const api = createApiClient();
 
 const Quizer = () => {        
     const [activeQuestion, setActiveQuestion] = useState(null)
@@ -15,7 +16,7 @@ const Quizer = () => {
     let url = useLocation();
 
     const getQuestionsList = async () => {          
-        let newQuestionList = db;    
+        let newQuestionList = await api.getData();    
         setQuestionList(newQuestionList);
     }
 
@@ -32,7 +33,7 @@ const Quizer = () => {
 
     const renderSideBar = () => {  
         return (
-            db.map( (q, idx) => {                
+            questionsList.map( (q, idx) => {                
                 return (
                     <QuestionSideBarItem
                         idx={idx}
